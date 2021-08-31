@@ -22,7 +22,7 @@ const SearchScreen = ({ history }) => {
     <div>
       <h1>Search Screen</h1>
       <hr />
-
+      
       <div className="row">
         <div className="col-5">
           <h4>Search Form</h4>

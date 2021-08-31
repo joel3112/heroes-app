@@ -23,7 +23,7 @@ describe('Pruebas en <HeroScreen />', () => {
   test('debe de mostrar un hero si el parámetro existe y se encuentra', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/hero/marvel-spider']}>
-        <Route path="/hero/:heroeId" component={HeroScreen} />
+        <Route path="/hero/:heroId" component={HeroScreen} />
       </MemoryRouter>
     );
 
@@ -39,7 +39,7 @@ describe('Pruebas en <HeroScreen />', () => {
 
     const wrapper = mount(
       <MemoryRouter initialEntries={['/hero/marvel-spider']}>
-        <Route path="/hero/:heroeId" component={() => <HeroScreen history={history} />} />
+        <Route path="/hero/:heroId" component={() => <HeroScreen history={history} />} />
       </MemoryRouter>
     );
 
@@ -52,7 +52,7 @@ describe('Pruebas en <HeroScreen />', () => {
   test('debe de regresar a la pantalla anterior GOBACK', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/hero/marvel-spider']}>
-        <Route path="/hero/:heroeId" component={() => <HeroScreen history={history} />} />
+        <Route path="/hero/:heroId" component={() => <HeroScreen history={history} />} />
       </MemoryRouter>
     );
 
@@ -65,7 +65,7 @@ describe('Pruebas en <HeroScreen />', () => {
   test('debe de llamar el redirect si el hero no existe', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/hero/marvel-spider123123123']}>
-        <Route path="/hero/:heroeId" component={() => <HeroScreen history={history} />} />
+        <Route path="/hero/:heroId" component={() => <HeroScreen history={history} />} />
       </MemoryRouter>
     );
 

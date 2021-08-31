@@ -17,7 +17,8 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark px-3">
       <Link className="navbar-brand" to="/">
-        Asociaciones
+        <img src="/assets/logo.png" alt="logo" height="35" />
+        <span className="ms-2">Heroes</span>
       </Link>
 
       <div className="navbar-collapse">
@@ -30,15 +31,15 @@ const Navbar = () => {
             DC
           </NavLink>
 
-          <NavLink activeClassName="active" className="nav-item nav-link" exact to="/search">
+          {/* <NavLink activeClassName="active" className="nav-item nav-link" exact to="/search">
             Search
-          </NavLink>
+          </NavLink> */}
         </div>
       </div>
 
       <div className="navbar-collapse d-flex flex-row-reverse">
         <ul className="navbar-nav ml-auto">
-          <span className="nav-item nav-link text-info">{user.name}</span>
+          <span className="nav-item nav-link text-primary">{user.name}</span>
 
           <button className="nav-item nav-link btn" onClick={handleLogout}>
             Logout
