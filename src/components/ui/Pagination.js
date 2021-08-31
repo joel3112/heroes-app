@@ -4,7 +4,7 @@ const Pagination = ({ current, total }) => {
   if (total === 1) {
     return null;
   }
-  
+
   return (
     <nav aria-label="...">
       <ul className="pagination">

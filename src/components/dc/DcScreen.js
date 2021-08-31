@@ -16,8 +16,9 @@ const DcScreen = ({ history }) => {
     onChangePage(1);
   }
 
+  const maxHeroesByPage = 10;
   const { data, loading } = useFetch('https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/all.json');
-  let heroes = Array(8).fill({});
+  let heroes = Array(maxHeroesByPage).fill({});
 
   if (data) {
     heroes = data.map((hero) => heroMapper(hero));
@@ -30,7 +31,7 @@ const DcScreen = ({ history }) => {
 
       <div className="animate__animated animate__fadeIn">
         {loading && <HeroListSkeleton heroes={heroes} />}
-        {!loading && <HeroList heroes={heroes} publisher="DC" onChangePage={onChangePage} />}
+        {!loading && <HeroList heroes={heroes} publisher="DC" maxHeroesByPage={maxHeroesByPage} onChangePage={onChangePage} />}
       </div>
     </div>
   );

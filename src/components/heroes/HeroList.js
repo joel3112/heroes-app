@@ -6,7 +6,7 @@ import queryString from 'query-string';
 import { getHeroesByPublisher } from '../../selectors/getHeroesByPublisher';
 import { getHeroesByPage } from '../../selectors/getHeroesByPage';
 
-const HeroList = ({ heroes, publisher, onChangePage }) => {
+const HeroList = ({ heroes, publisher, maxHeroesByPage, onChangePage }) => {
   const location = useLocation();
   const { page } = queryString.parse(location.search);
   if (!page) {
@@ -16,7 +16,6 @@ const HeroList = ({ heroes, publisher, onChangePage }) => {
 
   const heroesByPublisher = useMemo(() => getHeroesByPublisher(heroes, publisher), [heroes, publisher]);
 
-  const maxHeroesByPage = 8;
   const numPages = Math.ceil(heroesByPublisher.length / maxHeroesByPage);
   const heroesByPage = getHeroesByPage(heroesByPublisher, currentPage, maxHeroesByPage);
 
