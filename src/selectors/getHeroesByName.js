@@ -1,6 +1,4 @@
-import { heroes } from '../data/heroes';
-
-export const getHeroesByName = (name = '') => {
+export const getHeroesByName = (heroes = [], name = '') => {
   if (!name) {
     return [];
   }

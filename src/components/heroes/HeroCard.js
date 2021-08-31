@@ -1,26 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const HeroCard = ({ id, superhero, alter_ego, first_appearance, characters }) => {
+const HeroCard = ({ id, superhero, image, full_name }) => {
   return (
-    <div className="col">
-      <div className="card" style={{ maxWidth: 540 }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img src={`assets/heroes/${id}.jpg`} className="card-img" alt={superhero} />
+    <div className="col" style={{ width: 'auto' }}>
+      <div className="card" style={{ width: 240, height: 447 }}>
+        <div className="card-image bg-secondary bg-opacity-50" style={{ height: 285 }}>
+          <img src={image} className="card-img-top" alt={superhero} />
+        </div>
+        <div className="card-body d-flex flex-column justify-content-between bg-light">
+          <div className="card-data">
+            <h5 className="card-title text-uppercase fs-6">{superhero}</h5>
+            <p className="card-text fs-6 fw-light lh-sm">{full_name}</p>
           </div>
-
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">{superhero}</h5>
-              <p className="card-text">{alter_ego}</p>
-              {alter_ego !== characters && <p className="card-text">{characters}</p>}
-              <p className="card-text">
-                <small className="text-muted">{first_appearance}</small>
-              </p>
-
-              <Link to={`./heroes/${id}`}>Más...</Link>
-            </div>
+          <div className="text-end animate__animated animate__fadeIn">
+            <a href={`./heroes/${id}`} className="btn btn-primary">More info</a>
           </div>
         </div>
       </div>

@@ -1,10 +1,10 @@
-import { heroes } from '../data/heroes';
+import { publishers } from '../components/data/publishers';
 
-export const getHeroesByPublisher = (publisher) => {
-  const validPublishers = ['DC Comics', 'Marvel Comics'];
+export const getHeroesByPublisher = (heroes, publisher = '') => {
+  const validPublishers = publishers[publisher] || [];
 
-  if (!validPublishers.includes(publisher)) {
-    throw new Error(`Publisher "${publisher}" no es válido`);
+  if (!Object.keys(publishers).includes(publisher)) {
+    console.error(`Publisher "${publisher}" no es válido`);
   }
-  return heroes.filter((hero) => hero.publisher === publisher);
+  return heroes.filter((hero) => validPublishers.includes(hero.publisher));
 };
