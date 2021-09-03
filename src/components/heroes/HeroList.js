@@ -1,38 +1,31 @@
-import React, { useMemo } from 'react';
+import React, { useState } from 'react';
 import HeroCard from './HeroCard';
-import Pagination from '../ui/Pagination';
-import { useLocation } from 'react-router-dom';
-import queryString from 'query-string';
-import { getHeroesByPublisher } from '../../selectors/getHeroesByPublisher';
-import { getHeroesByPage } from '../../selectors/getHeroesByPage';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import {getHeroesByPage} from '../../selectors/getHeroesByPage';
 
-const HeroList = ({ heroes, publisher, maxHeroesByPage, onChangePage }) => {
-  const location = useLocation();
-  const { page } = queryString.parse(location.search);
-  if (!page) {
-    onChangePage(1);
-  }
-  const currentPage = parseInt(page);
+const HeroList = ({ heroes, maxHeroesByPage }) => {
+  const heroesByPage = (page) => getHeroesByPage(heroes, page, maxHeroesByPage);
 
-  const heroesByPublisher = useMemo(() => getHeroesByPublisher(heroes, publisher), [heroes, publisher]);
+  const [page, setPage] = useState(1);
+  const [state, setState] = useState({ items: heroesByPage(page) });
 
-  const numPages = Math.ceil(heroesByPublisher.length / maxHeroesByPage);
-  const heroesByPage = getHeroesByPage(heroesByPublisher, currentPage, maxHeroesByPage);
-
-  if (currentPage > numPages) {
-    onChangePage(numPages);
-  }
+  const fetchMoreData = () => {
+    setPage(page + 1);
+    setState({ items: state.items.concat(heroesByPage(page + 1)) });
+  };
 
   return (
     <>
-      <div className="row row-cols-1 row-cols-md-5 g-4 mb-5">
-        {heroesByPage.map((hero) => (
-          <HeroCard key={hero.id} {...hero} />
+      <InfiniteScroll 
+        className="row row-cols-1 row-cols-md-5 g-4 mb-5" 
+        dataLength={state.items.length} 
+        next={fetchMoreData} 
+        hasMore={true}
+      >
+        {state.items.map((item) => (
+          <HeroCard key={item.id} {...item} />
         ))}
-      </div>
-      <div className="d-flex justify-content-center">
-        <Pagination current={currentPage} total={numPages} />
-      </div>
+      </InfiniteScroll>
     </>
   );
 };
