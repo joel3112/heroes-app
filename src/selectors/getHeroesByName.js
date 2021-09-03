@@ -1,6 +1,6 @@
 export const getHeroesByName = (heroes = [], name = '') => {
   if (!name) {
-    return [];
+    return heroes;
   }
 
   name = name.toLocaleLowerCase();
