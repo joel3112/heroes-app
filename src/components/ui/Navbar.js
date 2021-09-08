@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
 import { AuthContext } from '../../auth/AuthContext';
-import { types } from '../../types/types';
+import { types } from '../../utils/types.js';
 
 const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
@@ -30,10 +30,6 @@ const Navbar = () => {
           <NavLink activeClassName="active" className="nav-item nav-link" exact to="/dc">
             DC
           </NavLink>
-
-          {/* <NavLink activeClassName="active" className="nav-item nav-link" exact to="/search">
-            Search
-          </NavLink> */}
         </div>
       </div>
 

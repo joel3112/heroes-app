@@ -1,16 +1,16 @@
 import React, { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import { useFetch } from '../../hooks/useFetch';
-import { heroMapper } from '../data/heroMapper';
-import HeroList from '../heroes/HeroList';
-import HeroListSkeleton from '../heroes/HeroListSkeleton';
-import { useForm } from '../../hooks/useForm';
-import SearchForm from '../search/SearchForm';
-import { getHeroesByName } from '../../selectors/getHeroesByName';
-import { getHeroesByPublisher } from '../../selectors/getHeroesByPublisher';
+import { useFetch } from '../hooks/useFetch';
+import { heroMapper } from '../utils/heroMapper';
+import HeroList from '../components/heroes/HeroList';
+import HeroListSkeleton from '../components/heroes/HeroListSkeleton';
+import { useForm } from '../hooks/useForm';
+import SearchForm from '../components/search/SearchForm';
+import { getHeroesByName } from '../utils/getHeroesByName';
+import { getHeroesByPublisher } from '../utils/getHeroesByPublisher';
 
-const DcScreen = ({ history }) => {
+const MarvelPage = ({ history }) => {
   const location = useLocation();
   const { q = '' } = queryString.parse(location.search);
 
@@ -29,7 +29,7 @@ const DcScreen = ({ history }) => {
     }
 
     let items = data.map((hero) => heroMapper(hero));
-    items = getHeroesByPublisher(items, 'DC');
+    items = getHeroesByPublisher(items, 'MARVEL');
 
     if (q) {
       items = getHeroesByName(items, q);
@@ -40,11 +40,10 @@ const DcScreen = ({ history }) => {
   return (
     <div>
       <div className="d-flex align-items-center justify-content-between">
-        <h4>DC HEROES</h4>
+        <h4>MARVEL HEROES</h4>
         <SearchForm handleInputChange={handleInputChange} searchText={searchText} handleSearch={handleSearch} />
       </div>
       <hr />
-
       <div className="animate__animated animate__fadeIn">
         {loading && <HeroListSkeleton heroes={heroes} />}
         {!loading && <HeroList heroes={heroes} maxHeroesByPage={maxHeroesByPage} />}
@@ -55,4 +54,4 @@ const DcScreen = ({ history }) => {
   );
 };
 
-export default DcScreen;
+export default MarvelPage;

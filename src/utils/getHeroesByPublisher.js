@@ -1,4 +1,4 @@
-import { publishers } from '../components/data/publishers';
+import { publishers } from './publishers';
 
 export const getHeroesByPublisher = (heroes, publisher = '') => {
   const validPublishers = publishers[publisher] || [];

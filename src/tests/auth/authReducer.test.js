@@ -1,5 +1,5 @@
 import { authReducer } from '../../auth/authReducer';
-import { types } from '../../types/types';
+import { types } from '../../utils/types';
 
 describe('Pruebas en authReducer', () => {
   test('debe de retornar el estado por defecto', () => {

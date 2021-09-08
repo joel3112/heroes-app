@@ -1,9 +1,9 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Navbar from '../components/ui/Navbar';
-import MarvelScreen from '../components/marvel/MarvelScreen';
-import DcScreen from '../components/dc/DcScreen';
-import HeroScreen from '../components/heroes/HeroScreen';
+import MarvelScreen from '../pages/MarvelPage';
+import DcScreen from '../pages/DcPage';
+import HeroScreen from '../pages/HeroPage';
 
 const DashboardRoutes = ({ history }) => {
   return (

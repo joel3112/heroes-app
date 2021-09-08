@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { MemoryRouter, Route } from 'react-router-dom';
-import HeroScreen from '../../../components/heroes/HeroScreen';
+import HeroScreen from '../../../pages/HeroPage';
 
 describe('Pruebas en <HeroScreen />', () => {
   const history = {

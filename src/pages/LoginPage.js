@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../auth/AuthContext';
-import { types } from '../../types/types';
+import { AuthContext } from '../auth/AuthContext';
+import { types } from '../utils/types';
 
-const LoginScreen = ({ history }) => {
+const LoginPage = ({ history }) => {
   const { dispatch } = useContext(AuthContext);
 
   const handleLogin = () => {
@@ -29,4 +29,4 @@ const LoginScreen = ({ history }) => {
   );
 };
 
-export default LoginScreen;
+export default LoginPage;

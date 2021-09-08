@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { AuthContext } from '../../../auth/AuthContext';
-import LoginScreen from '../../../components/login/LoginScreen';
+import LoginScreen from '../../../pages/LoginPage';
 import { types } from '../../../types/types';
 
 describe('Pruebas en <LoginScreen />', () => {

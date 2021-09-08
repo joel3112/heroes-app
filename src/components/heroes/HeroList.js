@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import HeroCard from './HeroCard';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {getHeroesByPage} from '../../selectors/getHeroesByPage';
+import {getHeroesByPage} from '../../utils/getHeroesByPage';
 
 const HeroList = ({ heroes, maxHeroesByPage }) => {
   const heroesByPage = (page) => getHeroesByPage(heroes, page, maxHeroesByPage);
