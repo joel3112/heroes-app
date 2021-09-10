@@ -72,10 +72,7 @@ const HeroPage = ({ history }) => {
               </span>
             </li>
           </ul>
-
-          {/* <h5>Characters</h5>
-          <p>{characters}</p> */}
-
+          
           <button className={`btn btn-outline-primary ${placeholder} ms-3 mt-3`} onClick={handleReturn}>
             Return
           </button>

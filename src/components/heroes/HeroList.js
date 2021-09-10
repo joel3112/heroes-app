@@ -1,32 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import HeroCard from './HeroCard';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {getHeroesByPage} from '../../utils/getHeroesByPage';
+import { useInfinitiveScroll } from '../../hooks/useInfinitiveScroll';
 
 const HeroList = ({ heroes, maxHeroesByPage }) => {
-  const heroesByPage = (page) => getHeroesByPage(heroes, page, maxHeroesByPage);
-
-  const [page, setPage] = useState(1);
-  const [state, setState] = useState({ items: heroesByPage(page) });
-
-  const fetchMoreData = () => {
-    setPage(page + 1);
-    setState({ items: state.items.concat(heroesByPage(page + 1)) });
-  };
-
+  console.log(heroes);
+  const [items, fetchMoreData] = useInfinitiveScroll(heroes, maxHeroesByPage);
+  
   return (
-    <>
-      <InfiniteScroll 
-        className="row row-cols-1 row-cols-md-5 g-4 mb-5" 
-        dataLength={state.items.length} 
-        next={fetchMoreData} 
-        hasMore={true}
-      >
-        {state.items.map((item) => (
-          <HeroCard key={item.id} {...item} />
-        ))}
-      </InfiniteScroll>
-    </>
+    <InfiniteScroll 
+      className="row row-cols-1 row-cols-md-5 g-4 mb-5" 
+      dataLength={items.length} 
+      next={fetchMoreData}
+      hasMore={true}
+    >
+      {items.map((item, index) => (
+        <HeroCard key={item.id || index} {...item} />
+      ))}
+    </InfiniteScroll>
   );
 };
 
