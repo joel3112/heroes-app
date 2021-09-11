@@ -3,7 +3,8 @@
   overflow: hidden;
   text-decoration: none !important;
   color: var(--secondary) !important;
-  transition: all 0.3s;
+  outline: none !important;
+  transition: color 0.3s;
 }
 
 .card-header {

@@ -25,7 +25,7 @@ const heroData = (id, superhero, full_name) => {
 
 const HeroCard = ({ id, superhero, image, full_name }) => {
   return (
-    <a href={`./heroes/${id}`} tabIndex="-1" className="card animate__animated animate__fadeIn">
+    <a href={`./heroes/${id}`} tabIndex="-1" className="card">
       <div className="card-header p-0">
         <div className="card-image" style={{ backgroundImage: `url(${image})` }}></div>
       </div>
