@@ -1,0 +1,21 @@
+.navbar {
+  min-height: var(--header-height);
+  background-color: var(--secondary) !important;
+  padding: 0 1.5rem !important;
+}
+
+.navbar-brand {
+  padding: 8px 0;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+}
+
+.navbar.xs {
+  padding-right: 1rem !important;
+}
+
+.collapse {
+  padding-bottom: 20px;
+  transition: all 0.3s;
+}

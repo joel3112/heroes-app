@@ -24,7 +24,7 @@ export const useLoadHeroes = (history, publisher, maxItemsByBlock) => {
   const { data } = useFetch('https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/all.json');
   const heroesFiltered = useMemo(() => {
     if (!data) {
-      return Array(maxItemsByBlock).fill({});
+      return Array(maxItemsByBlock - 6).fill({});
     }
 
     let items = data.map((hero) => heroMapper(hero));

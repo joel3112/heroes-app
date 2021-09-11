@@ -1,5 +1,83 @@
 // change the theme
 $primary: #f5b300;
 
+body,
+.main-container {
+  --primary: #f5b300;
+  --primary-light: #f6d056;
+  --secondary: #383c54;
+  --secondary-light: #51556f;
+  --header-height: 68px;
+  --placeholder-bg: #868e96;
+
+  // Scrollbar
+  --scrollbarBG: var(--bs-gray-400);
+  --thumbBG: var(--primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+input {
+  margin: 0 !important;
+  color: var(--secondary) !important;
+}
+
+input::placeholder {
+  color: var(--bs-gray-500) !important;
+}
+
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
+
+/*! Firefox */
+html,
+.main-container {
+  scrollbar-color: var(--scrollbarBG) var(--thumbBG);
+}
+
+/*! Other Browser */
+.main-container::-webkit-scrollbar {
+  width: 8px;
+}
+.main-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+.main-container::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+.main-container::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+}
+
+// Custom classes
+body {
+  overflow: hidden;
+}
+
+.application-container {
+  max-height: 100vh;
+  display: flex;
+}
+
+.main-container {
+  margin-top: var(--header-height);
+  width: 100%;
+  height: calc(100vh - #{var(--header-height)});
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.page-container {
+  padding-top: 48px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

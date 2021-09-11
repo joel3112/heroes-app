@@ -1,0 +1,41 @@
+.profile-container {
+  display: flex;
+  max-width: 950px;
+  margin-bottom: 30px;
+}
+
+.image-container {
+  height: 390px !important;
+  width: 296px !important;
+  min-width: 296px !important;
+  margin-right: 40px;
+  margin-bottom: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--placeholder-bg);
+}
+
+.title {
+  min-width: 200px;
+}
+
+.name {
+  font-size: 20px;
+}
+
+.list-group-item {
+  color: var(--secondary-light);
+}
+
+.list-group-item > b {
+  color: var(--secondary);
+}
+
+.profile-container.xs {
+  flex-direction: column;
+}
+
+.profile-container.xs .image-container {
+  width: 100% !important;
+}

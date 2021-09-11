@@ -1,0 +1,13 @@
+.form {
+  width: 100%;
+  max-width: 450px;
+}
+
+.form-control {
+  outline: none;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  border-color: var(--bs-gray-400) !important;
+}

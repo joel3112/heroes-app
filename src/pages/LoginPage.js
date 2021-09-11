@@ -18,7 +18,7 @@ const LoginPage = ({ history }) => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container page-container">
       <h1>LoginScreen</h1>
       <hr />
 

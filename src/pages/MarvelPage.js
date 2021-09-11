@@ -4,7 +4,7 @@ import SearchForm from '../components/search/SearchForm';
 import { useLoadHeroes } from '../hooks/useLoadHeroes';
 
 const MarvelPage = ({ history }) => {
-  const maxHeroesByPage = 15;
+  const maxHeroesByPage = 18;
   const [
     heroes, 
     q, 
@@ -16,8 +16,8 @@ const MarvelPage = ({ history }) => {
   const emptyMessage = <div className="alert alert-info d-flex align-items-center">There is no a hero with "{q}"</div>;
 
   return (
-    <div>
-      <div className="d-flex align-items-center justify-content-between">
+    <div className="container page-container">
+      <div className="header-container">
         <h4>MARVEL HEROES</h4>
         <SearchForm 
           handleInputChange={handleInputChange} 
