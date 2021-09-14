@@ -5,14 +5,50 @@
 }
 
 .navbar-brand {
+  color: var(--primary) !important;
   padding: 8px 0;
+  margin-right: 30px !important;
   height: var(--header-height);
   display: flex;
   align-items: center;
 }
 
+.navbar-brand .logo {
+  height: 35px;
+  min-width: 35px;
+}
+
+.nav-route {
+  height: var(--header-height);
+  display: flex !important;
+  align-items: center;
+  border-top: 5px solid transparent !important;
+  border-bottom: 5px solid transparent !important;
+  text-transform: uppercase;
+  padding: 0.5rem 1.5rem !important;
+}
+
+.nav-route.active {
+  border-bottom: 5px solid var(--primary) !important;
+}
+
+.nav-bar-actions {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .navbar.xs {
   padding-right: 1rem !important;
+}
+
+.navbar.xs .nav-route {
+  border-width: 2px !important;
+  padding: 0 0.5rem !important;
+  height: 50px !important;
+}
+
+.navbar.xs .nav-bar-actions {
+  margin-top: 20px;
 }
 
 .collapse {

@@ -13,12 +13,12 @@ const MarvelPage = ({ history }) => {
     handleSearch
   ] = useLoadHeroes(history, 'MARVEL', maxHeroesByPage);
 
-  const emptyMessage = <div className="alert alert-info d-flex align-items-center">There is no a hero with "{q}"</div>;
+  const emptyMessage = <div className="empty-message-list">There is no a hero with "{q}"</div>;
 
   return (
     <div className="container page-container">
       <div className="header-container">
-        <h4>MARVEL HEROES</h4>
+        <h4>Marvel Heroes</h4>
         <SearchForm 
           handleInputChange={handleInputChange} 
           searchText={searchText} 

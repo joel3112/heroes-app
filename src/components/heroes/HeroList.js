@@ -8,10 +8,11 @@ import './HeroList.css';
 const HeroList = ({ heroes, maxHeroesByPage }) => {
   const [items, fetchMoreData] = useInfinitiveScroll(heroes, maxHeroesByPage);
   const breakpoint = useBreakpointViewport();
-  
+
   return (
+    Boolean(items && items.length) &&
     <InfiniteScroll 
-      className={`card-list size-${breakpoint} mb-5`}
+      className={`card-list size-${breakpoint}`}
       dataLength={items.length} 
       next={fetchMoreData}
       hasMore={true}
@@ -24,4 +25,4 @@ const HeroList = ({ heroes, maxHeroesByPage }) => {
   );
 };
 
-export default HeroList;
+export default React.memo(HeroList);

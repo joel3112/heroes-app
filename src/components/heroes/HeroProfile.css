@@ -1,19 +1,28 @@
 .profile-container {
   display: flex;
-  max-width: 950px;
+  max-width: 1100px;
   margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 0;
 }
 
 .image-container {
-  height: 390px !important;
-  width: 296px !important;
-  min-width: 296px !important;
-  margin-right: 40px;
   margin-bottom: 30px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: fit-content;
   background-color: var(--placeholder-bg);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  min-width: 300px;
+  width: 300px;
+  height: 400px;
+}
+
+.image-container img {
+  width: 100%;
+}
+
+.data-container.loading {
+  width: 100%;
+  max-width: 450px;
 }
 
 .title {
@@ -21,15 +30,28 @@
 }
 
 .name {
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
-.list-group-item {
-  color: var(--secondary-light);
+.list-group-item span {
+  line-height: 20px;
+  font-weight: 300;
+  font-size: 15.5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.list-group-item > b {
-  color: var(--secondary);
+.list-group-item span b {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.profile-container.xxl,
+.profile-container.xl {
+  gap: 50px;
 }
 
 .profile-container.xs {
@@ -37,5 +59,20 @@
 }
 
 .profile-container.xs .image-container {
-  width: 100% !important;
+  width: 300px;
+  height: 400px;
+  min-width: auto;
+  margin: 0 auto 30px auto;
+}
+
+.profile-container.xs {
+  text-align: center;
+}
+
+.profile-container.xs .data-container {
+  margin: 0;
+}
+
+.profile-container.xs .list-group-item span {
+  flex-direction: column;
 }

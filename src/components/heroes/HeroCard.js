@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './HeroCard.css';
 
 const heroData = (id, superhero, full_name) => {
@@ -17,23 +18,21 @@ const heroData = (id, superhero, full_name) => {
 
   return (
     <div className="card-data">
-      <h5 className="card-title text-uppercase">{superhero}</h5>
-      <p className="card-text lh-sm text-uppercase">{full_name}</p>
+      <h5 className="card-title">{superhero}</h5>
+      <p className="card-text lh-sm">{full_name}</p>
     </div>
   );
 };
 
 const HeroCard = ({ id, superhero, image, full_name }) => {
   return (
-    <a href={`./heroes/${id}`} tabIndex="-1" className="card">
-      <div className="card-header p-0">
+    <Link to={`./heroes/${id}`} className="card">
+      <div className="card-header">
         <div className="card-image" style={{ backgroundImage: `url(${image})` }}></div>
       </div>
-      <div className="card-body d-flex flex-column justify-content-between bg-light">
-        {heroData(id, superhero, full_name)}
-      </div>
-    </a>
+      <div className="card-body">{heroData(id, superhero, full_name)}</div>
+    </Link>
   );
 };
 
-export default HeroCard;
+export default React.memo(HeroCard);

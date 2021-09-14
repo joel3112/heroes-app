@@ -20,12 +20,25 @@ const HeroPage = ({ history }) => {
       history.goBack();
     }
   };
+  const placeholder = loading ? 'placeholder' : '';
 
   return (
-    <HeroProfile
-      hero={hero}
-      loading={loading}
-      handleReturn={handleReturn} />
+    <div className="container page-container">
+      <div className="header-container">
+        <h4 className="placeholder-glow">
+          <span className={`${placeholder} col-3 title`}>{hero.superhero}</span>
+        </h4>
+        <button className={`btn btn-outline-primary ${placeholder}`} onClick={handleReturn}>
+          Return
+        </button>
+      </div>
+      <hr />
+
+      <HeroProfile 
+        hero={hero} 
+        loading={loading} 
+        handleReturn={handleReturn} />
+    </div>
   );
 };
 

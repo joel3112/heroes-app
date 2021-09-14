@@ -1,18 +1,21 @@
 // change the theme
 $primary: #f5b300;
+$dark: #212529;
 
 body,
 .main-container {
   --primary: #f5b300;
   --primary-light: #f6d056;
-  --secondary: #383c54;
+  --secondary: #212529;
   --secondary-light: #51556f;
-  --header-height: 68px;
   --placeholder-bg: #868e96;
+  --header-height: 68px;
 
   // Scrollbar
   --scrollbarBG: var(--bs-gray-400);
   --thumbBG: var(--primary);
+
+  font-family: 'Inter', sans-serif;
 }
 
 h1,
@@ -27,6 +30,10 @@ input {
 
 input::placeholder {
   color: var(--bs-gray-500) !important;
+}
+
+button {
+  box-shadow: none !important;
 }
 
 // Import Bootstrap and its default variables
@@ -80,4 +87,21 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 20px;
+}
+
+.header-container > h4 {
+  color: var(--primary) !important;
+  font-size: 28px;
+  max-width: 50%;
+}
+
+.header-container + hr {
+  margin: 15px 0 40px 0;
+}
+
+.empty-message-list {
+  color: var(--secondary-light);
+  text-transform: uppercase;
+  font-size: 25px;
 }
