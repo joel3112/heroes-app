@@ -10,7 +10,7 @@ const getDeviceConfig = (width) => {
     return 'md';
   } else if (width < 1200) {
     return 'lg';
-  } else if (width < 1400) {
+  } else if (width < 1600) {
     return 'xl';
   } else {
     return 'xxl';

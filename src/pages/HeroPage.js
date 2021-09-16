@@ -1,8 +1,10 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
-import { heroMapper } from '../utils/heroMapper';
+import { LeftOutlined } from '@ant-design/icons';
+import { Button, Title } from '../styles';
 import HeroProfile from '../components/heroes/HeroProfile';
+import { heroMapper } from '../utils/heroMapper';
 
 const HeroPage = ({ history }) => {
   const { heroId } = useParams();
@@ -20,17 +22,20 @@ const HeroPage = ({ history }) => {
       history.goBack();
     }
   };
-  const placeholder = loading ? 'placeholder' : '';
 
   return (
     <div className="container page-container">
       <div className="header-container">
-        <h4 className="placeholder-glow">
-          <span className={`${placeholder} col-3 title`}>{hero.superhero}</span>
-        </h4>
-        <button className={`btn btn-outline-primary ${placeholder}`} onClick={handleReturn}>
-          Return
-        </button>
+        <Title className="title" loading={loading}>
+          {hero.superhero}
+        </Title>
+
+        <Button 
+          size="large"
+          type="primary"
+          ghost
+          icon={<LeftOutlined />}
+          onClick={handleReturn}>Return</Button>
       </div>
       <hr />
 

@@ -5,9 +5,10 @@
 
 .form-control {
   outline: none;
+  border-color: var(--placeholder-bg) !important;
 }
 
 .form-control:focus {
   box-shadow: none !important;
-  border-color: var(--bs-gray-400) !important;
+  border-color: var(--placeholder-bg) !important;
 }

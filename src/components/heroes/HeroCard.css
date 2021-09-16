@@ -29,7 +29,7 @@
   transition: color 0.3s;
   position: relative;
   height: 98px;
-  background-color: var(--bs-gray-200) !important;
+  background-color: var(--placeholder-bg) !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

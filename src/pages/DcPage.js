@@ -2,6 +2,7 @@ import React from 'react';
 import HeroList from '../components/heroes/HeroList';
 import SearchForm from '../components/search/SearchForm';
 import { useLoadHeroes } from '../hooks/useLoadHeroes';
+import { Title } from '../styles';
 
 const DcPage = ({ history }) => {
   const maxHeroesByPage = 18;
@@ -18,7 +19,10 @@ const DcPage = ({ history }) => {
   return (
     <div className="container page-container">
       <div className="header-container">
-        <h4>DC Heroes</h4>
+        <Title className="title">
+          DC Heroes
+        </Title>
+
         <SearchForm 
           handleInputChange={handleInputChange} 
           searchText={searchText} 

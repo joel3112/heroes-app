@@ -5,6 +5,7 @@ import { Squash as Hamburger } from 'hamburger-react';
 import { AuthContext } from '../../auth/AuthContext';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
 import { types } from '../../utils/types.js';
+import { isMobile } from '../../utils';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -13,7 +14,6 @@ const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
   const history = useHistory();
 
-  const isMobile = () => breakpoint === 'xs';
   const handleLogout = () => {
     history.replace('/login');
     dispatch({
@@ -23,10 +23,10 @@ const Navbar = () => {
   const handleMenu = () => setMenuOpened((prev) => !prev);
 
   useEffect(() => {
-    if (!isMobile()) {
+    if (!isMobile(breakpoint)) {
       setMenuOpened(false);
     }
-  }, [isMobile]);
+  }, []);
 
   const headerLogo = useMemo(() => {
     return <img src="/assets/logo.png" className="logo" alt="logo" />;
@@ -78,9 +78,9 @@ const Navbar = () => {
           <span className="ms-2">Heroes</span>
         </Link>
 
-        {!isMobile() && navRoutes()}
-        {!isMobile() && navActions()}
-        {isMobile() && menuToggle()}
+        {!isMobile(breakpoint) && navRoutes()}
+        {!isMobile(breakpoint) && navActions()}
+        {isMobile(breakpoint) && menuToggle()}
 
         <div className={`collapse w-100 ${menuOpened ? 'show' : ''}`}>
           {navRoutes()}

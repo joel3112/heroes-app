@@ -1,58 +1,70 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
+import { Row, Col, Image } from 'antd';
+import { FlexBox, Title } from '../../styles/index';
 import HeroPowerstats from './HeroPowerstats';
-import './HeroProfile.css';
+import HeroData from './HeroData';
+import { isMobileTablet, isMobileTabletMedium } from '../../utils/index';
+
+const widthImage = (breakpoint) => (isMobileTabletMedium(breakpoint) ? 280 : 312);
+const heightImage = (breakpoint) => (isMobileTabletMedium(breakpoint) ? 373 : 426);
+const gapImage = 50;
+
+const RowContainer = styled.div`
+  display: flex;
+  flex-direction: ${({ breakpoint }) => (isMobileTablet(breakpoint) ? 'column' : 'row')};
+  align-items: ${({ breakpoint }) => (isMobileTablet(breakpoint) ? 'center' : 'initial')};
+  flex-wrap: wrap;
+  gap: ${gapImage}px;
+`;
+
+const ImageContainer = styled.div`
+  width: ${({ breakpoint }) => widthImage(breakpoint)}px;
+  min-width: ${({ breakpoint }) => widthImage(breakpoint)}px;
+  height: ${({ breakpoint }) => heightImage(breakpoint)}px;
+  display: flex;
+  background-color: var(--placeholder-bg);
+`;
+
+const DataContainer = styled.div`
+  ${FlexBox('column')};
+  gap: ${gapImage / 2}px;
+  flex-wrap: wrap;
+  align-items: ${({ breakpoint }) => (isMobileTablet(breakpoint) ? 'center' : 'initial')};
+  text-align: ${({ breakpoint }) => (isMobileTablet(breakpoint) ? 'center' : 'initial')};
+  max-width: ${({ breakpoint }) => (isMobileTablet(breakpoint) ? 'initial' : `calc(100% - ${widthImage(breakpoint)}px - ${gapImage}px)`)};
+`;
 
 const HeroProfile = ({ hero, loading }) => {
-  const { image, superhero, full_name, place_of_birth, publisher, alter_ego, first_appearance, aliases, powerstats } = hero;
+  const { image, full_name, superhero, powerstats, ...restData } = hero;
   const breakpoint = useBreakpointViewport();
-  const placeholder = loading ? 'placeholder' : '';
 
   return (
-    <div className={`profile-container ${breakpoint}`}>
-      <div className="image-container">
-        {image && <img src={image} alt="heroe" />}
-      </div>
-
-      <div className={`data-container animate__animated animate__fadeIn ${loading ? 'loading' : ''}`}>
-        <h4 className="placeholder-glow ms-3 mb-3">
-          <span className={`${placeholder} col-4 name`}>{full_name || superhero}</span>
-        </h4>
-
-        <ul className="list-group-flush ps-0">
-          <li className="list-group-item placeholder-glow">
-            <span className={`${placeholder} col-12`}>
-              <HeroPowerstats powerstats={powerstats} />
-            </span>
-          </li>
-          <li className="list-group-item placeholder-glow">
-            <span className={`${placeholder} col-12`}>
-              <b>Place of bith:</b> {place_of_birth}
-            </span>
-          </li>
-          <li className="list-group-item placeholder-glow">
-            <span className={`${placeholder} col-12`}>
-              <b>Aliases:</b> {aliases?.join(', ')}
-            </span>
-          </li>
-          <li className="list-group-item placeholder-glow">
-            <span className={`${placeholder} col-12`}>
-              <b>Alter ego:</b> {alter_ego}
-            </span>
-          </li>
-          <li className="list-group-item placeholder-glow">
-            <span className={`${placeholder} col-12`}>
-              <b>Publisher:</b> {publisher}
-            </span>
-          </li>
-          <li className="list-group-item placeholder-glow">
-            <span className={`${placeholder} col-12`}>
-              <b>First appearance:</b> {first_appearance}
-            </span>
-          </li>      
-        </ul>
-      </div>
-    </div>
+    <RowContainer breakpoint={breakpoint}>
+      <ImageContainer breakpoint={breakpoint}>
+        {!loading && <Image preview={false} width="100%" height="100%" src={image} />}
+      </ImageContainer>
+      <DataContainer breakpoint={breakpoint}>
+        <Row>
+          <Col>
+            <Title level={3} uppercase="true" loading={loading}>
+              {full_name || superhero}
+            </Title>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={24} sm={24} md={20} lg={20} xl={16} xxl={12}>
+            <HeroPowerstats powerstats={powerstats} loading={loading} />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={24} sm={24} md={24} lg={18} xl={15} xxl={12}>
+            <HeroData hero={restData} loading={loading} />
+          </Col>
+        </Row>
+      </DataContainer>
+    </RowContainer>
   );
 };
 

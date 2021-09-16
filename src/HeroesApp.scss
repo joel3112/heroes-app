@@ -8,11 +8,14 @@ body,
   --primary-light: #f6d056;
   --secondary: #212529;
   --secondary-light: #51556f;
-  --placeholder-bg: #868e96;
+  --placeholder-bg: #eeeeee;
+  --placeholder-text: #adb5bd;
+  --border-gray: #d9d9d9;
+  --dark: rgba(0, 0, 0, 0.85);
   --header-height: 68px;
 
   // Scrollbar
-  --scrollbarBG: var(--bs-gray-400);
+  --scrollbarBG: var(--placeholder-bg);
   --thumbBG: var(--primary);
 
   font-family: 'Inter', sans-serif;
@@ -29,7 +32,8 @@ input {
 }
 
 input::placeholder {
-  color: var(--bs-gray-500) !important;
+  color: var(--placeholder-text) !important;
+  font-weight: 300;
 }
 
 button {
@@ -47,7 +51,7 @@ html,
 
 /*! Other Browser */
 .main-container::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 .main-container {
   scrollbar-width: thin;
@@ -90,10 +94,10 @@ body {
   gap: 20px;
 }
 
-.header-container > h4 {
+.header-container .title {
   color: var(--primary) !important;
   font-size: 28px;
-  max-width: 50%;
+  // max-width: 50%;
 }
 
 .header-container + hr {
@@ -101,7 +105,6 @@ body {
 }
 
 .empty-message-list {
-  color: var(--secondary-light);
   text-transform: uppercase;
   font-size: 25px;
 }

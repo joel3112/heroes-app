@@ -4,6 +4,7 @@ import { authReducer } from './auth/authReducer';
 import AppRouter from './routers/AppRouter';
 
 import './HeroesApp.scss';
+import './HeroesApp.less';
 
 const init = () => {
   return JSON.parse(localStorage.getItem('user')) || { logged: false };
