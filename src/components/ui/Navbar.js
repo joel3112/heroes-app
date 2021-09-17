@@ -4,8 +4,8 @@ import { Link, NavLink, useHistory } from 'react-router-dom';
 import { Squash as Hamburger } from 'hamburger-react';
 import { AuthContext } from '../../auth/AuthContext';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
-import { types } from '../../utils/types.js';
-import { isMobile } from '../../utils';
+import { types } from '../../utils/constants';
+import { isMobile } from '../../utils/helpers';
 import './Navbar.css';
 
 const Navbar = () => {

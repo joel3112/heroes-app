@@ -1,3 +1,8 @@
+export const types = {
+  login: '[auth] login',
+  logout: '[auth] logout',
+};
+
 export const publishers = {
   MARVEL: [
     'Angel',

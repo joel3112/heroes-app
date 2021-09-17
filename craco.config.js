@@ -9,8 +9,7 @@ module.exports = {
           lessOptions: {
             modifyVars: { 
               '@primary-color': '#f5b300',
-              '@progress-default-color': '#f5b300',
-              '@input-hover-border-color': 'transparent'
+              '@progress-default-color': '#f5b300'
             },
             javascriptEnabled: true,
           },

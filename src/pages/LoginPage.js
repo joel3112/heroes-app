@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../auth/AuthContext';
-import { types } from '../utils/types';
+import { types } from '../utils/constants';
 
 const LoginPage = ({ history }) => {
   const { dispatch } = useContext(AuthContext);

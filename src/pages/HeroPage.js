@@ -2,11 +2,13 @@ import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 import { LeftOutlined } from '@ant-design/icons';
-import { Button, Title } from '../styles';
+import { Affix } from 'antd';
+import { Button } from '../styles';
+import HeroHeader from '../components/heroes/HeroHeader';
 import HeroProfile from '../components/heroes/HeroProfile';
-import { heroMapper } from '../utils/heroMapper';
+import { heroMapper } from '../utils/helpers';
 
-const HeroPage = ({ history }) => {
+const HeroPage = ({ history, container }) => {
   const { heroId } = useParams();
   const { data, loading, error } = useFetch(`https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/id/${heroId}.json`);
   const hero = heroMapper(data);
@@ -25,20 +27,17 @@ const HeroPage = ({ history }) => {
 
   return (
     <div className="container page-container">
-      <div className="header-container">
-        <Title className="title" loading={loading}>
-          {hero.superhero}
-        </Title>
-
-        <Button 
-          size="large"
-          type="primary"
-          ghost
-          icon={<LeftOutlined />}
-          onClick={handleReturn}>Return</Button>
-      </div>
-      <hr />
-
+      <Affix target={() => container}>
+        <HeroHeader title={hero.superhero} loading={loading}>
+          <Button 
+            size="large"
+            type="primary"
+            ghost
+            icon={<LeftOutlined />}
+            onClick={handleReturn}>Return</Button>
+        </HeroHeader>
+      </Affix>
+      
       <HeroProfile 
         hero={hero} 
         loading={loading} 

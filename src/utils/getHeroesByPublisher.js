@@ -1,4 +1,4 @@
-import { publishers } from './publishers';
+import { publishers } from './constants';
 
 export const getHeroesByPublisher = (heroes, publisher = '') => {
   const validPublishers = publishers[publisher] || [];

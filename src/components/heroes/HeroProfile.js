@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
-import { Row, Col, Image } from 'antd';
-import { FlexBox, Title } from '../../styles/index';
+import { Row, Col } from 'antd';
+import { Image, Title } from '../../styles/index';
 import HeroPowerstats from './HeroPowerstats';
 import HeroData from './HeroData';
-import { isMobileTablet, isMobileTabletMedium } from '../../utils/index';
+import { isMobileTablet, isMobileTabletMedium } from '../../utils/helpers';
 
 const widthImage = (breakpoint) => (isMobileTabletMedium(breakpoint) ? 280 : 312);
 const heightImage = (breakpoint) => (isMobileTabletMedium(breakpoint) ? 373 : 426);
@@ -28,7 +28,8 @@ const ImageContainer = styled.div`
 `;
 
 const DataContainer = styled.div`
-  ${FlexBox('column')};
+  display: flex;
+  flex-direction: column;
   gap: ${gapImage / 2}px;
   flex-wrap: wrap;
   align-items: ${({ breakpoint }) => (isMobileTablet(breakpoint) ? 'center' : 'initial')};
@@ -43,7 +44,7 @@ const HeroProfile = ({ hero, loading }) => {
   return (
     <RowContainer breakpoint={breakpoint}>
       <ImageContainer breakpoint={breakpoint}>
-        {!loading && <Image preview={false} width="100%" height="100%" src={image} />}
+        {!loading && <Image width="100%" height="100%" src={image} />}
       </ImageContainer>
       <DataContainer breakpoint={breakpoint}>
         <Row>

@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Row, Col } from 'antd';
-import { FlexBox } from '../../styles';
+import { Row, Col, Space } from 'antd';
+import { Text } from '../../styles';
 import Skeleton from 'react-loading-skeleton';
 
 const items = {
@@ -11,24 +10,6 @@ const items = {
   aliases: { span: 2, label: 'Aliases' },
   first_appearance: { span: 2, label: 'First appearance' },
 };
-
-const DescriptionItem = styled.div`
-  ${FlexBox('column')}
-
-  label {
-    color: var(--placeholder-text);
-    font-weight: normal;
-    font-size: 14px;
-    margin-bottom: 3px;
-  }
-
-  span {
-    font-size: 16px;
-    font-weight: 400;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
-`;
 
 const SkeletonContainer = () => (
   <>
@@ -46,16 +27,16 @@ const HeroData = ({ hero, loading }) => {
 
         return (
           <Col xs={24} sm={24} md={12 * span} lg={12 * span} key={item}>
-            <DescriptionItem>
-              {loading ? (
-                SkeletonContainer()
-              ) : (
-                <>
-                  <label>{label.toUpperCase()}</label>
-                  <span>{Array.isArray(value) ? value.join(',') : value}</span>
-                </>
-              )}
-            </DescriptionItem>
+            {loading ? (
+              SkeletonContainer()
+            ) : (
+              <Space direction="vertical" size={[3, 3]}>
+                <Text size={14} color="var(--placeholder-text)" uppercase="true">
+                  {label}
+                </Text>
+                <Text size={16}>{Array.isArray(value) ? value.join(', ') : value}</Text>
+              </Space>
+            )}
           </Col>
         );
       })}
