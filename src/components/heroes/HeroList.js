@@ -1,10 +1,12 @@
-import React from 'react';
-import HeroCard from './HeroCard';
+import React, { useContext } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
+import { ContainerContext } from '../../contexts/ContainerContext';
 import { useInfinitiveScroll } from '../../hooks/useInfinitiveScroll';
+import HeroCard from './HeroCard';
 import { Row, Col } from 'antd';
 
 const HeroList = ({ heroes, maxHeroesByPage }) => {
+  const { container } = useContext(ContainerContext);
   const [{ items, hasMore, loading }, fetchMoreData] = useInfinitiveScroll(heroes, maxHeroesByPage);
 
   return (
@@ -15,7 +17,7 @@ const HeroList = ({ heroes, maxHeroesByPage }) => {
         loadMore={fetchMoreData} 
         hasMore={!loading && hasMore} 
         useWindow={false} 
-        getScrollParent={() => document.getElementById('main-container')}>
+        getScrollParent={() => container}>
         <Row gutter={[18, 18]}>
           {items.map((item, index) => (
             <Col key={item.id || index} xs={12} sm={12} md={8} lg={6} xl={4} xxl={4}>

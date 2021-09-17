@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton';
 import { 
   Button as ButtonAntd, 
   Progress as ProgressAntd, 
@@ -6,7 +7,6 @@ import {
   Input, 
   Typography 
 } from 'antd';
-import Skeleton from 'react-loading-skeleton';
 
 // Container
 // --

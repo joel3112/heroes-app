@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ContainerContext } from '../contexts/ContainerContext';
 import HeroHeader from '../components/heroes/HeroHeader';
 import SearchForm from '../components/search/SearchForm';
 import HeroList from '../components/heroes/HeroList';
@@ -6,7 +7,8 @@ import { Affix } from 'antd';
 import { Text } from '../styles';
 import { useLoadHeroes } from '../hooks/useLoadHeroes';
 
-const MarvelPage = ({ history, container }) => {
+const MarvelPage = ({ history }) => {
+  const { container } = useContext(ContainerContext);
   const maxHeroesByPage = 18;
   const [
     heroes, 

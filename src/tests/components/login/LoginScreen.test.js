@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { AuthContext } from '../../../auth/AuthContext';
+import { AuthContext } from '../../../contexts/AuthContext';
 import LoginScreen from '../../../pages/LoginPage';
 import { types } from '../../../types/types';
 

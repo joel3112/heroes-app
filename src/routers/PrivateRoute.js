@@ -11,7 +11,7 @@ const PrivateRoute = ({isAuthenticated, component: Component, ...rest}) => {
         ? <Component {...props} />
         : <Redirect to="/login" />
     )} />
-  )
+  );
 };
 
 PrivateRoute.propTypes = {

@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { MemoryRouter, Router } from 'react-router-dom';
 import '@testing-library/jest-dom';
-import { AuthContext } from '../../../auth/AuthContext';
+import { AuthContext } from '../../../contexts/AuthContext';
 import Navbar from '../../../components/ui/Navbar';
 import { types } from '../../../types/types';
 

@@ -1,8 +1,8 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
 import { Row, Col, Space } from 'antd';
 import { Text, Progress } from '../../styles';
-import Skeleton from 'react-loading-skeleton';
 import { isMobileTabletMedium } from '../../utils/helpers';
 
 const widthPowerstats = (breakpoint) => (isMobileTabletMedium(breakpoint) ? 270 : 480);

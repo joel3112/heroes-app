@@ -91,11 +91,18 @@ body {
   }
 }
 
-.ant-space-item {
-  display: contents;
-
-  & > span {
-    display: flex;
-    align-items: center;
+.ant-space {
+  &.ant-space-align-center {
+    .ant-space-item {
+      margin: 0 auto;
+    }  
+  }
+  .ant-space-item {
+    display: contents;
+  
+    & > span {
+      display: flex;
+      align-items: center;
+    }
   }
 }

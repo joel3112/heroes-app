@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
 import { Space } from 'antd';
 import { Text, Title } from '../../styles/index';
-import Skeleton from 'react-loading-skeleton';
 
 const CardContainer = styled(Link)`
   overflow: hidden;

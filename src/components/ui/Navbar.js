@@ -2,23 +2,20 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
 import { Squash as Hamburger } from 'hamburger-react';
-import { AuthContext } from '../../auth/AuthContext';
+import {AuthContext} from '../../contexts/AuthContext';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
-import { types } from '../../utils/constants';
 import { isMobile } from '../../utils/helpers';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [menuOpened, setMenuOpened] = useState('');
-  const breakpoint = useBreakpointViewport();
-  const { user, dispatch } = useContext(AuthContext);
   const history = useHistory();
+  const [menuOpened, setMenuOpened] = useState('');
+  const { user, logout } = useContext(AuthContext);
+  const breakpoint = useBreakpointViewport();
 
   const handleLogout = () => {
     history.replace('/login');
-    dispatch({
-      type: types.logout,
-    });
+    logout();
   };
   const handleMenu = () => setMenuOpened((prev) => !prev);
 
