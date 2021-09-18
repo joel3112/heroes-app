@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
-import { useFetch } from '../hooks/useFetch';
 import { LeftOutlined } from '@ant-design/icons';
+import { ContainerContext } from '../contexts/ContainerContext';
+import { useFetch } from '../hooks/useFetch';
 import { Affix } from 'antd';
 import { Button } from '../styles';
 import HeroHeader from '../components/heroes/HeroHeader';
 import HeroProfile from '../components/heroes/HeroProfile';
 import { heroMapper } from '../utils/helpers';
 
-const HeroPage = ({ history, container }) => {
+const HeroPage = ({ history }) => {
+  const { container } = useContext(ContainerContext);
   const { heroId } = useParams();
   const { data, loading, error } = useFetch(`https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/id/${heroId}.json`);
   const hero = heroMapper(data);

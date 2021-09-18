@@ -1,5 +1,7 @@
 import React from 'react';
-import { Search } from '../../styles';
+import { Input } from 'antd';
+
+const { Search } = Input;
 
 const SearchForm = ({ handleSearch, handleInputChange, searchText }) => {
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
-import { Row, Col, Space } from 'antd';
-import { Text, Progress } from '../../styles';
+import { Row, Col, Space, Progress } from 'antd';
+import { Text } from '../../styles';
 import { isMobileTabletMedium } from '../../utils/helpers';
 
 const widthPowerstats = (breakpoint) => (isMobileTabletMedium(breakpoint) ? 270 : 480);
@@ -37,7 +37,7 @@ const HeroPowerstats = ({ powerstats = {}, loading }) => {
         <Col xs={8} sm={8} md={8} lg={4} key={powerKey}>
           <Space direction="vertical" align="center" size={[8, 8]}>
             {percentage(powerstats[powerKey], breakpoint)}
-            <Text size="14" weight="300">
+            <Text size={0.8} weight="300">
               {powerKey}
             </Text>
           </Space>

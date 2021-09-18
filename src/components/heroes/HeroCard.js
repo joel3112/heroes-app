@@ -67,10 +67,12 @@ const SkeletonData = () => {
   return (
     <Space direction="vertical">
       <Skeleton width={100} height={20} />
-      <Skeleton width={150} height={15} />
+      <Skeleton width={125} height={15} />
     </Space>
   );
 };
+
+const LIMIT_CHARACTERS = 15;
 
 const HeroCard = ({ id, superhero, image, full_name }) => {
   return (
@@ -83,12 +85,13 @@ const HeroCard = ({ id, superhero, image, full_name }) => {
           SkeletonData()
         ) : (
           <Space direction="vertical" size={[2, 2]}>
-            <Title level={5} ellipsis style={{ zIndex: 3 }}>
+            <Title level={5} style={{ zIndex: 3 }} breakline="true">
               {superhero.toUpperCase()}
             </Title>
-            <Text size={13} weight={300} style={{ opacity: 0.6, zIndex: 3 }}>
-              {full_name.toUpperCase()}
-            </Text>
+            {(superhero.length < LIMIT_CHARACTERS) && (full_name.length < LIMIT_CHARACTERS) &&
+            <Text size={0.75} weight={300} style={{ opacity: 0.6, zIndex: 3 }} uppercase="true">
+              {full_name}
+            </Text>}
           </Space>
         )}
       </CardBody>

@@ -35,15 +35,18 @@ const HeroData = ({ hero, loading }) => {
 
         return (
           <Col xs={24} sm={24} md={12 * span} lg={12 * span} key={item}>
-            <Space direction="vertical" align={isMobileTablet(breakpoint) ? 'center' : 'start'} size={[3, 3]}>
+            <Space 
+              direction="vertical" 
+              align={isMobileTablet(breakpoint) ? 'center' : 'start'} 
+              size={[3, 3]}>
               {loading ? (
                 SkeletonContainer(breakpoint)
               ) : (
                 <>
-                  <Text size={14} color="var(--placeholder-text)" uppercase="true">
+                  <Text size={0.8} type="placeholder-text" uppercase="true">
                     {label}
                   </Text>
-                  <Text size={16}>{Array.isArray(value) ? value.join(', ') : value}</Text>
+                  <Text>{Array.isArray(value) ? value.join(', ') : value}</Text>
                 </>
               )}
             </Space>

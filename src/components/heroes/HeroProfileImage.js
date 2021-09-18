@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Image } from 'antd';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
-import { Image } from '../../styles';
 import { isMobileTabletMedium } from '../../utils/helpers';
 
 const widthImage = (breakpoint) => (isMobileTabletMedium(breakpoint) ? 280 : 312);
@@ -20,7 +20,7 @@ const HeroProfileImage = ({ loading, image }) => {
 
   return (
     <ImageContainer breakpoint={breakpoint}>
-      {!loading && <Image width="100%" height="100%" src={image} />}
+      {!loading && <Image preview={false} width="100%" height="100%" src={image} />}
     </ImageContainer>
   );
 };

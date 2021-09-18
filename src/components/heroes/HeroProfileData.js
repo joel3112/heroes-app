@@ -1,27 +1,23 @@
 import React from 'react'
-import styled from 'styled-components';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
 import { Row, Col } from 'antd';
-import { Title } from '../../styles/index';
+import { Space, Title } from '../../styles/index';
 import HeroPowerstats from './HeroPowerstats';
 import HeroData from './HeroData';
 import { isMobileTablet } from '../../utils/helpers';
-
-const DataContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  flex-wrap: wrap;
-  align-items: ${({ breakpoint }) => (isMobileTablet(breakpoint) ? 'center' : 'initial')};
-  text-align: ${({ breakpoint }) => (isMobileTablet(breakpoint) ? 'center' : 'initial')};
-`;
 
 const HeroProfileData = ({ hero, loading }) => {
   const breakpoint = useBreakpointViewport();
   const { superhero, full_name, powerstats, ...restData } = hero;
 
   return (
-    <DataContainer breakpoint={breakpoint}>
+    <Space 
+      direction="vertical" 
+      align={isMobileTablet(breakpoint) && 'center'}
+      size={[25, 25]}
+      wrap
+      breakpoint={breakpoint}
+      style={{ textAlign: isMobileTablet(breakpoint) && 'center' }}>
       <Row>
         <Col>
           <Title level={3} uppercase="true" loading={loading}>
@@ -30,7 +26,7 @@ const HeroProfileData = ({ hero, loading }) => {
         </Col>
       </Row>
       <Row>
-        <Col xs={24} sm={24} md={20} lg={20} xl={16} xxl={12}>
+        <Col xs={24} sm={24} md={20} lg={20} xl={16} xxl={16}>
           <HeroPowerstats powerstats={powerstats} loading={loading} />
         </Col>
       </Row>
@@ -39,7 +35,7 @@ const HeroProfileData = ({ hero, loading }) => {
           <HeroData hero={restData} loading={loading} />
         </Col>
       </Row>
-    </DataContainer>
+    </Space>
   );
 };
 

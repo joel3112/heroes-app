@@ -1,8 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
 import { Squash as Hamburger } from 'hamburger-react';
-import {AuthContext} from '../../contexts/AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
 import { isMobile } from '../../utils/helpers';
 import './Navbar.css';
@@ -23,11 +22,7 @@ const Navbar = () => {
     if (!isMobile(breakpoint)) {
       setMenuOpened(false);
     }
-  }, []);
-
-  const headerLogo = useMemo(() => {
-    return <img src="/assets/logo.png" className="logo" alt="logo" />;
-  }, []);
+  }, [breakpoint]);
 
   const menuToggle = () => {
     return (
@@ -59,7 +54,7 @@ const Navbar = () => {
         <ul className="navbar-nav ml-auto">
           <span className="nav-item nav-link text-primary">{user.name}</span>
 
-          <button className="nav-item nav-link btn" onClick={handleLogout}>
+          <button className="nav-item nav-link btn nav-link-button" onClick={handleLogout}>
             Logout
           </button>
         </ul>
@@ -71,15 +66,15 @@ const Navbar = () => {
     <>
       <nav className={`navbar fixed-top navbar-expand-sm navbar-dark ${breakpoint}`}>
         <Link className="navbar-brand" to="/">
-          {headerLogo}
-          <span className="ms-2">Heroes</span>
+          <img src="/assets/logo.png" className="logo" alt="logo" />
+          <span>Heroes</span>
         </Link>
 
         {!isMobile(breakpoint) && navRoutes()}
         {!isMobile(breakpoint) && navActions()}
         {isMobile(breakpoint) && menuToggle()}
 
-        <div className={`collapse w-100 ${menuOpened ? 'show' : ''}`}>
+        <div className={`collapse ${menuOpened ? 'show' : ''}`}>
           {navRoutes()}
           {navActions()}
         </div>

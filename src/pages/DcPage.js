@@ -9,7 +9,7 @@ import { useLoadHeroes } from '../hooks/useLoadHeroes';
 
 const DcPage = ({ history }) => {
   const { container } = useContext(ContainerContext);
-  const maxHeroesByPage = 18;
+  const maxHeroesByPage = 24;
   const [
     heroes, 
     q, 
@@ -32,7 +32,7 @@ const DcPage = ({ history }) => {
       <div className="animate__animated animate__fadeIn">
         <HeroList heroes={heroes} maxHeroesByPage={maxHeroesByPage} />
 
-        {q !== '' && !heroes.length && <Text size={25}>There are no results with search "{q}".</Text>}
+        {q !== '' && !heroes.length && <Text size={1.4}>There are no results with search "{q}".</Text>}
       </div>
     </div>
   );

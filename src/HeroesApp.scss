@@ -1,91 +1,88 @@
+$primary: #f5b300;
 
-// body,
-// .main-container {
-//   --primary: #f5b300;
-//   --primary-light: #f6d056;
-//   --secondary: #212529;
-//   --secondary-light: #51556f;
-//   --placeholder-bg: #eeeeee;
-//   --placeholder-text: #adb5bd;
-//   --border-gray: #d9d9d9;
-//   --border-gray-light: #ededed;
-//   --dark: rgba(0, 0, 0, 0.85);
-//   --header-height: 68px;
+body,
+.main-container {
+  --primary: #f5b300;
+  --primary-light: #f6d056;
+  --secondary: #212529;
+  --secondary-light: #51556f;
+  --placeholder-bg: #eeeeee;
+  --placeholder-text: #adb5bd;
+  --border-gray: #d9d9d9;
+  --border-gray-light: #ededed;
+  --dark: rgba(0, 0, 0, 0.85);
+  --white: #fff;
+  --header-height: 68px;
 
-//   // Scrollbar
-//   --scrollbarBG: var(--placeholder-bg);
-//   --thumbBG: var(--primary);
+  // Scrollbar
+  --scrollbarBG: var(--placeholder-bg);
+  --thumbBG: var(--primary);
 
-//   font-family: 'Inter', sans-serif;
-// }
+  font-family: 'Inter', sans-serif;
+}
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// input {
-//   margin: 0 !important;
-//   color: var(--secondary) !important;
-// }
+h1,
+h2,
+h3,
+h4,
+h5,
+input {
+  margin: 0 !important;
+  color: var(--secondary) !important;
+}
 
-// input::placeholder {
-//   color: var(--placeholder-text) !important;
-//   font-weight: 300;
-// }
+input::placeholder {
+  color: var(--placeholder-text) !important;
+  font-weight: 300;
+}
 
-// button {
-//   box-shadow: none !important;
-// }
+button {
+  box-shadow: none !important;
+}
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
 
-// /*! Firefox */
-// html,
-// .main-container {
-//   scrollbar-color: var(--scrollbarBG) var(--thumbBG);
-// }
+/*! Firefox */
+html,
+.main-container {
+  scrollbar-color: var(--scrollbarBG) var(--thumbBG);
+}
 
-// /*! Other Browser */
-// .main-container::-webkit-scrollbar {
-//   width: 5px;
-// }
-// .main-container {
-//   scrollbar-width: thin;
-//   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-// }
-// .main-container::-webkit-scrollbar-track {
-//   background: var(--scrollbarBG);
-// }
-// .main-container::-webkit-scrollbar-thumb {
-//   background-color: var(--thumbBG);
-// }
+/*! Other Browser */
+.main-container::-webkit-scrollbar {
+  width: 0.4rem;
+}
+.main-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+.main-container::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+.main-container::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+}
 
-// // Custom classes
-// body {
-//   overflow: hidden;
-// }
+// Custom classes
+body {
+  overflow: hidden;
+}
 
-// .application-container {
-//   max-height: 100vh;
-//   display: flex;
-// }
+.application-container {
+  max-height: 100vh;
+  display: flex;
+}
 
-// .main-container {
-//   margin-top: var(--header-height);
-//   width: 100%;
-//   height: calc(100vh - #{var(--header-height)});
-//   overflow-y: auto;
-//   overflow-x: hidden;
-// }
+.main-container {
+  margin-top: var(--header-height);
+  width: 100%;
+  height: calc(100vh - #{var(--header-height)});
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
-// .page-container {
-//   padding-top: 48px;
-//   margin-bottom: 80px;
-// }
-
-// .empty-message-list {
-//   text-transform: uppercase;
-//   font-size: 25px;
-// }
+.page-container {
+  padding-top: 28px;
+  margin-bottom: 4rem;
+}

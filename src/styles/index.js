@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
-import { 
-  Button as ButtonAntd, 
-  Progress as ProgressAntd, 
-  Image as ImageAntd, 
-  Input, 
-  Typography 
-} from 'antd';
+import { Button as ButtonAntd, Space as SpaceAntd, Typography } from 'antd';
 
 // Container
 // --
@@ -18,12 +12,16 @@ const { Title: TitleAntd, Text: TextAntd } = Typography;
 // Title
 const TitleStyled = styled(TitleAntd)`
   ${({ uppercase }) => uppercase && `text-transform: uppercase`};
-  ${({ color }) => color && `color: ${color} !important`};
-  ${({ breakline }) => Boolean(breakline) && `
+  ${({ type }) => type && `color: var(--${type}) !important`};
+  ${({ breakline }) =>
+    Boolean(breakline) &&
+    `
     word-break: break-word; 
     overflow-wrap: break-word;
   `};
-  ${({ ellipsis }) => Boolean(ellipsis) && `
+  ${({ ellipsis }) =>
+    Boolean(ellipsis) &&
+    `
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -41,14 +39,18 @@ const TitleSkeleton = ({ loading, ...restProps }) => {
 // Text
 const TextStyled = styled(TextAntd)`
   ${({ uppercase }) => Boolean(uppercase) && `text-transform: uppercase`};
-  font-size: ${({ size }) => size ? `${size}px` : '15px'};
-  font-weight: ${({ weight }) => weight ? `${weight}` : '400'};
-  ${({ color }) => color && `color: ${color}`};
-  ${({ breakline }) => Boolean(breakline) && `
+  font-size: ${({ size }) => (size ? `${size}rem` : '1rem')};
+  font-weight: ${({ weight }) => (weight ? `${weight}` : '400')};
+  ${({ type }) => type && `color: var(--${type}) !important`};
+  ${({ breakline }) =>
+    Boolean(breakline) &&
+    `
     word-break: break-word; 
     overflow-wrap: break-word;
   `};
-  ${({ ellipsis }) => Boolean(ellipsis) && `
+  ${({ ellipsis }) =>
+    Boolean(ellipsis) &&
+    `
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -72,42 +74,21 @@ const ButtonStyled = styled(ButtonAntd)`
   justify-content: center;
 `;
 
-// Progress
+// Space
 // --
-const ProgressStyled = styled(ProgressAntd)`
-  .ant-progress-circle-path {
-    stroke: var(--primary) !important;
-  }
-  .ant-progress-text {
-    color: initial !important;
-  }
-`;
-
-// Input
-// --
-const { Search: SearchAntd } = Input;
-// Search
-const SearchStyled = styled(SearchAntd)`
-  .ant-input-affix-wrapper {
-    box-shadow: none !important;
-  }
-`;
-
-// Image
-// --
-const ImageStyled = styled(ImageAntd)`
-  .ant-image-mask-info {
-    display: flex !important;
-    align-items: center;
-  }
-`;
-
-export { 
-  Main, 
-  TitleSkeleton as Title, 
-  TextSkeleton as Text, 
-  ButtonStyled as Button,
-  SearchStyled as Search,
-  ProgressStyled as Progress,
-  ImageStyled as Image,
+const alignTypes = {
+  center: 'center',
+  start: 'flex-start',
+  end: 'flex-end',
+  between: 'space-between',
 };
+
+const SpaceStyled = styled(SpaceAntd)`
+  display: flex;
+  ${({ direction }) => `flex-direction: ${direction === 'vertical' ? 'column' : 'row'}`};
+  ${({ align }) => align && `align-items: ${alignTypes[align]}`};
+  ${({ justify }) => justify && `justify-content: ${alignTypes[justify]}`};
+  ${({ wrap }) => wrap && `flex-wrap: wrap`};
+`;
+
+export { Main, TitleSkeleton as Title, TextSkeleton as Text, ButtonStyled as Button, SpaceStyled as Space };

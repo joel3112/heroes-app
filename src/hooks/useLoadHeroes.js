@@ -3,13 +3,14 @@ import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { useFetch } from './useFetch';
 import { useForm } from './useForm';
-import { getHeroesByPublisher } from '../utils/getHeroesByPublisher';
-import { getHeroesByName } from '../utils/getHeroesByName';
-import { heroMapper } from '../utils/helpers';
+import { useBreakpointViewport } from './useBreakpointViewport';
+import { heroMapper, getHeroesByName, getHeroesByPublisher } from '../utils/helpers';
+import { BREAKPOINT_COLS } from '../utils/constants';
 
 export const useLoadHeroes = (history, publisher, maxItemsByBlock) => {
   const [heroes, setHeroes] = useState([]);
   const [query, setQuery] = useState('');
+  const breakpoint = useBreakpointViewport();
 
   const location = useLocation();
   const { q = '' } = queryString.parse(location.search);
@@ -24,7 +25,7 @@ export const useLoadHeroes = (history, publisher, maxItemsByBlock) => {
   const { data } = useFetch('https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/all.json');
   const heroesFiltered = useMemo(() => {
     if (!data) {
-      return Array(Math.ceil(maxItemsByBlock / 3)).fill({});
+      return Array(BREAKPOINT_COLS[breakpoint] * 2).fill({});
     }
 
     let items = data.map((hero) => heroMapper(hero));
@@ -34,7 +35,7 @@ export const useLoadHeroes = (history, publisher, maxItemsByBlock) => {
       items = getHeroesByName(items, q);
     }
     return items;
-  }, [data, maxItemsByBlock, publisher, q]);
+  }, [breakpoint, data, publisher, q]);
 
   useEffect(() => {
     setQuery(q);
