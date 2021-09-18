@@ -20,7 +20,7 @@ const HeroProfileData = ({ hero, loading }) => {
       style={{ textAlign: isMobileTablet(breakpoint) && 'center' }}>
       <Row>
         <Col>
-          <Title level={3} uppercase="true" loading={loading}>
+          <Title level={3} uppercase loading={loading}>
             {full_name || superhero}
           </Title>
         </Col>

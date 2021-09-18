@@ -16,7 +16,7 @@ const MarvelPage = ({ history }) => {
     searchText, 
     handleInputChange, 
     handleSearch
-  ] = useLoadHeroes(history, 'MARVEL', maxHeroesByPage);
+  ] = useLoadHeroes(history, 'MARVEL');
 
   return (
     <div className="container page-container">

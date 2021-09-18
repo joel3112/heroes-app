@@ -28,6 +28,7 @@
   border-bottom: 0.3em solid transparent !important;
   text-transform: uppercase;
   padding: 0.5em 1.2em !important;
+  font-size: 1rem !important;
 }
 
 .nav-route.active {

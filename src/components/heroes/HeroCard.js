@@ -85,11 +85,11 @@ const HeroCard = ({ id, superhero, image, full_name }) => {
           SkeletonData()
         ) : (
           <Space direction="vertical" size={[2, 2]}>
-            <Title level={5} style={{ zIndex: 3 }} breakline="true">
-              {superhero.toUpperCase()}
+            <Title level={5} style={{ zIndex: 3 }} breakline uppercase>
+              {superhero}
             </Title>
             {(superhero.length < LIMIT_CHARACTERS) && (full_name.length < LIMIT_CHARACTERS) &&
-            <Text size={0.75} weight={300} style={{ opacity: 0.6, zIndex: 3 }} uppercase="true">
+            <Text size={0.75} weight={300} style={{ opacity: 0.6, zIndex: 3 }} uppercase>
               {full_name}
             </Text>}
           </Space>

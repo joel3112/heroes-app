@@ -7,7 +7,7 @@ import { useBreakpointViewport } from './useBreakpointViewport';
 import { heroMapper, getHeroesByName, getHeroesByPublisher } from '../utils/helpers';
 import { BREAKPOINT_COLS } from '../utils/constants';
 
-export const useLoadHeroes = (history, publisher, maxItemsByBlock) => {
+export const useLoadHeroes = (history, publisher, defaultRows = 2) => {
   const [heroes, setHeroes] = useState([]);
   const [query, setQuery] = useState('');
   const breakpoint = useBreakpointViewport();
@@ -25,17 +25,19 @@ export const useLoadHeroes = (history, publisher, maxItemsByBlock) => {
   const { data } = useFetch('https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/all.json');
   const heroesFiltered = useMemo(() => {
     if (!data) {
-      return Array(BREAKPOINT_COLS[breakpoint] * 2).fill({});
+      return Array(BREAKPOINT_COLS[breakpoint] * defaultRows).fill({});
     }
 
     let items = data.map((hero) => heroMapper(hero));
-    items = getHeroesByPublisher(items, publisher);
-
+    if (publisher) {
+      items = getHeroesByPublisher(items, publisher);
+    }
     if (q) {
       items = getHeroesByName(items, q);
     }
+
     return items;
-  }, [breakpoint, data, publisher, q]);
+  }, [breakpoint, data, publisher, q, defaultRows]);
 
   useEffect(() => {
     setQuery(q);

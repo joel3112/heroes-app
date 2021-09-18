@@ -36,6 +36,10 @@ const Navbar = () => {
     return (
       <div className="navbar-collapse">
         <div className="navbar-nav">
+          <NavLink activeClassName="active" className="nav-item nav-link nav-route" exact to="/home">
+            Home
+          </NavLink>
+
           <NavLink activeClassName="active" className="nav-item nav-link nav-route" exact to="/marvel">
             Marvel
           </NavLink>

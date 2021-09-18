@@ -16,7 +16,12 @@ export const BREAKPOINT_COLS = {
   [BREAKPOINTS.XXL]: 6,
 };
 
-export const publishers = {
+export const MAIN_HEROES = {
+  MARVEL: [346, 149, 659, 332, 620, 313, 107, 579, 697, 30, 157, 106, 213, 201, 655, 414, 717, 226, 303, 251],
+  DC: [38, 70, 136, 165, 194, 265, 298, 306, 370, 309, 561, 643, 644, 720, 294, 204, 216, 637, 97, 514],
+};
+
+export const PUBLISHER = {
   MARVEL: [
     'Angel',
     'Angel Salvadore',
@@ -42,7 +47,6 @@ export const publishers = {
     'Rune King Thor',
     'Scorpion',
     'She-Thing',
-    'Speed Demon',
     'Spider-Carnage',
     'Tempest',
     'Thunderbird II',
@@ -66,6 +70,7 @@ export const publishers = {
     'Red Robin',
     'Robin II',
     'Robin III',
+    'Speed Demon',
     'Superman Prime One-Million',
   ],
 };

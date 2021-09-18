@@ -2,6 +2,21 @@ import styled from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 import { Button as ButtonAntd, Space as SpaceAntd, Typography } from 'antd';
 
+const resolveTagFromProps = (props) => {
+  const resolveProps = {};
+
+  Object.keys(props).forEach((key) => {
+    if (typeof props[key] == 'boolean') {
+      if (props[key] === true) {
+        resolveProps[key] = `${props[key]}`;
+      }
+      return;
+    }
+    resolveProps[key] = props[key];
+  });
+  return resolveProps;
+};
+
 // Container
 // --
 const Main = styled.div``;
@@ -32,7 +47,7 @@ const TitleSkeleton = ({ loading, ...restProps }) => {
   return (
     <>
       {loading && <Skeleton height={30} width={180} />}
-      {!loading && <TitleStyled {...restProps} />}
+      {!loading && <TitleStyled {...resolveTagFromProps(restProps)} />}
     </>
   );
 };
@@ -61,7 +76,7 @@ const TextSkeleton = ({ loading, ...restProps }) => {
   return (
     <>
       {loading && <Skeleton height={25} width={180} />}
-      {!loading && <TextStyled {...restProps} />}
+      {!loading && <TextStyled {...resolveTagFromProps(restProps)} />}
     </>
   );
 };

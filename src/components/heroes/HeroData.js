@@ -43,7 +43,7 @@ const HeroData = ({ hero, loading }) => {
                 SkeletonContainer(breakpoint)
               ) : (
                 <>
-                  <Text size={0.8} type="placeholder-text" uppercase="true">
+                  <Text size={0.8} type="placeholder-text" uppercase>
                     {label}
                   </Text>
                   <Text>{Array.isArray(value) ? value.join(', ') : value}</Text>

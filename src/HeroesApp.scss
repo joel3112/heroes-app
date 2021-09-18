@@ -43,6 +43,10 @@ button {
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
 
+// Import Slick Carousel
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+
 /*! Firefox */
 html,
 .main-container {
@@ -85,4 +89,38 @@ body {
 .page-container {
   padding-top: 28px;
   margin-bottom: 4rem;
+}
+
+// Slick slider
+
+.slick-slider .slick-track {
+  display: flex;
+}
+
+.slick-slider .slick-slide {
+  margin-left: 0.8rem;
+  
+  &[data-index="0"] {
+    margin-left: 0;
+  }
+  &.slick-active {
+    width: 16.55em !important;
+  }
+}
+
+.slick-slider .slick-arrow {
+  height: 3rem;
+  width: 3rem;
+  z-index: 10;
+  
+  &::before {
+    color: var(--primary-light);
+    font-size: 3rem;
+  }
+  &.slick-prev {
+    left: 10px;
+  }
+  &.slick-next {
+    right: 10px;
+  }
 }

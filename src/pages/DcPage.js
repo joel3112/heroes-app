@@ -16,7 +16,7 @@ const DcPage = ({ history }) => {
     searchText, 
     handleInputChange, 
     handleSearch
-  ] = useLoadHeroes(history, 'DC', maxHeroesByPage);
+  ] = useLoadHeroes(history, 'DC');
 
   return (
     <div className="container page-container">
