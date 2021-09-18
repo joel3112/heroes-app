@@ -1,27 +1,40 @@
-import React from 'react';
-import HeroCard from './HeroCard';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import React, { useContext } from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
+import { ContainerContext } from '../../contexts/ContainerContext';
 import { useInfinitiveScroll } from '../../hooks/useInfinitiveScroll';
-import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
-import './HeroList.css';
+import HeroCard from './HeroCard';
+import { Row, Col } from 'antd';
+import { BREAKPOINTS, BREAKPOINT_COLS } from '../../utils/constants';
 
 const HeroList = ({ heroes, maxHeroesByPage }) => {
-  const [items, fetchMoreData] = useInfinitiveScroll(heroes, maxHeroesByPage);
-  const breakpoint = useBreakpointViewport();
-
+  const { container } = useContext(ContainerContext);
+  const [{ items, hasMore, loading }, fetchMoreData] = useInfinitiveScroll(heroes, maxHeroesByPage);
+  
   return (
-    Boolean(items && items.length) &&
-    <InfiniteScroll 
-      className={`card-list size-${breakpoint}`}
-      dataLength={items.length} 
-      next={fetchMoreData}
-      hasMore={true}
-      scrollableTarget="main-container"
-    >
-      {items.map((item, index) => (
-        <HeroCard key={item.id || index} {...item} />
-      ))}
-    </InfiniteScroll>
+    Boolean(items && items.length) && (
+      <InfiniteScroll 
+        initialLoad={false} 
+        pageStart={1} 
+        loadMore={fetchMoreData} 
+        hasMore={!loading && hasMore} 
+        useWindow={false} 
+        getScrollParent={() => container}>
+        <Row gutter={[18, 18]}>
+          {items.map((item, index) => (
+            <Col 
+              key={item.id || index} 
+              xs={24/BREAKPOINT_COLS[BREAKPOINTS.XS]} 
+              sm={24/BREAKPOINT_COLS[BREAKPOINTS.SM]} 
+              md={24/BREAKPOINT_COLS[BREAKPOINTS.MD]} 
+              lg={24/BREAKPOINT_COLS[BREAKPOINTS.LG]} 
+              xl={24/BREAKPOINT_COLS[BREAKPOINTS.XL]} 
+              xxl={24/BREAKPOINT_COLS[BREAKPOINTS.XXL]}>
+              <HeroCard {...item} />
+            </Col>
+          ))}
+        </Row>
+      </InfiniteScroll>
+    )
   );
 };
 

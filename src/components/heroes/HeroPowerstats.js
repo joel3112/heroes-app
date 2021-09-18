@@ -1,52 +1,49 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
-import './HeroPowerstats.css';
+import { Row, Col, Space, Progress } from 'antd';
+import { Text } from '../../styles';
+import { isMobileTabletMedium } from '../../utils/helpers';
 
-const HeroPowerstats = ({ powerstats }) => {
-  const powers = powerstats ? Object.keys(powerstats) : [];
+const widthPowerstats = (breakpoint) => (isMobileTabletMedium(breakpoint) ? 270 : 480);
+const widthPowerstat = 70;
+const heightPowerstat = 96;
+
+const percentage = (value) => 
+  <Progress 
+    type="circle" 
+    strokeWidth={11} 
+    width={widthPowerstat} 
+    percent={value} 
+    format={() => `${value}%`} />
+;
+
+const SkeletonContainer = (breakpoint) => {
+  return (
+    <Skeleton height={heightPowerstat} width="90vw" style={{ maxWidth: widthPowerstats(breakpoint) }} />
+  )
+};
+
+const HeroPowerstats = ({ powerstats = {}, loading }) => {
   const breakpoint = useBreakpointViewport();
 
-  const percentage = (value, label) => {
-    return (
-      <div className="powerstat-container">
-        <div className="single-chart">
-          <svg viewBox="0 0 36 36" className="circular-chart orange">
-            <path
-              className="circle-bg"
-              d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-            <path
-              className="circle"
-              strokeDasharray={`${value}, 100`}
-              d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-            <text x="18" y="20.35" className="percentage">
-              {value}%
-            </text>
-          </svg>
-        </div>
-        <span className="powerstat-label">{label}</span>
-      </div>
-    );
-  };
+  if (loading) {
+    return SkeletonContainer(breakpoint);
+  }
 
   return (
-    <div className={`powersats-group ${breakpoint}`}>
-      <div className="powerstats-container">
-        {powers.slice(0, 3).map((power) => (
-          <div key={power}>{percentage(powerstats[power], power)}</div>
-        ))}
-      </div>
-      <div className="powerstats-container">
-        {powers.slice(3).map((power) => (
-          <div key={power}>{percentage(powerstats[power], power)}</div>
-        ))}
-      </div>
-    </div>
+    <Row gutter={[12, 12]} style={{ marginBottom: '10px', maxWidth: widthPowerstats(breakpoint) }}>
+      {Object.keys(powerstats).map((powerKey) => (
+        <Col xs={8} sm={8} md={8} lg={4} key={powerKey}>
+          <Space direction="vertical" align="center" size={[8, 8]}>
+            {percentage(powerstats[powerKey], breakpoint)}
+            <Text size={0.8} weight="300">
+              {powerKey}
+            </Text>
+          </Space>
+        </Col>
+      ))}
+    </Row>
   );
 };
 

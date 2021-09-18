@@ -1,7 +1,8 @@
 .navbar {
   min-height: var(--header-height);
   background-color: var(--secondary) !important;
-  padding: 0 1.5rem !important;
+  padding: 0 1.5em !important;
+  font-size: 1.1rem !important;
 }
 
 .navbar-brand {
@@ -16,20 +17,21 @@
 .navbar-brand .logo {
   height: 35px;
   min-width: 35px;
+  margin-right: 0.4em;
 }
 
 .nav-route {
   height: var(--header-height);
   display: flex !important;
   align-items: center;
-  border-top: 5px solid transparent !important;
-  border-bottom: 5px solid transparent !important;
+  border-top: 0.3em solid transparent !important;
+  border-bottom: 0.3em solid transparent !important;
   text-transform: uppercase;
-  padding: 0.5rem 1.5rem !important;
+  padding: 0.5em 1.2em !important;
 }
 
 .nav-route.active {
-  border-bottom: 5px solid var(--primary) !important;
+  border-bottom: 0.3em solid var(--primary) !important;
 }
 
 .nav-bar-actions {
@@ -37,21 +39,26 @@
   flex-direction: row-reverse;
 }
 
+.nav-link-button {
+  font-size: 1.1rem !important;
+}
+
 .navbar.xs {
-  padding-right: 1rem !important;
+  padding-right: 0.8em !important;
 }
 
 .navbar.xs .nav-route {
-  border-width: 2px !important;
-  padding: 0 0.5rem !important;
-  height: 50px !important;
+  border-width: 0.15em !important;
+  padding: 0 0.2em !important;
+  height: 45px !important;
 }
 
 .navbar.xs .nav-bar-actions {
-  margin-top: 20px;
+  margin-top: 1em;
 }
 
 .collapse {
-  padding-bottom: 20px;
+  width: 100%;
+  padding-bottom: 1.5rem;
   transition: all 0.3s;
 }

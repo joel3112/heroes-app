@@ -1,36 +1,28 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
 import { Squash as Hamburger } from 'hamburger-react';
-import { AuthContext } from '../../auth/AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
-import { types } from '../../utils/types.js';
+import { isMobile } from '../../utils/helpers';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [menuOpened, setMenuOpened] = useState('');
-  const breakpoint = useBreakpointViewport();
-  const { user, dispatch } = useContext(AuthContext);
   const history = useHistory();
+  const [menuOpened, setMenuOpened] = useState('');
+  const { user, logout } = useContext(AuthContext);
+  const breakpoint = useBreakpointViewport();
 
-  const isMobile = () => breakpoint === 'xs';
   const handleLogout = () => {
     history.replace('/login');
-    dispatch({
-      type: types.logout,
-    });
+    logout();
   };
   const handleMenu = () => setMenuOpened((prev) => !prev);
 
   useEffect(() => {
-    if (!isMobile()) {
+    if (!isMobile(breakpoint)) {
       setMenuOpened(false);
     }
-  }, [isMobile]);
-
-  const headerLogo = useMemo(() => {
-    return <img src="/assets/logo.png" className="logo" alt="logo" />;
-  }, []);
+  }, [breakpoint]);
 
   const menuToggle = () => {
     return (
@@ -62,7 +54,7 @@ const Navbar = () => {
         <ul className="navbar-nav ml-auto">
           <span className="nav-item nav-link text-primary">{user.name}</span>
 
-          <button className="nav-item nav-link btn" onClick={handleLogout}>
+          <button className="nav-item nav-link btn nav-link-button" onClick={handleLogout}>
             Logout
           </button>
         </ul>
@@ -74,15 +66,15 @@ const Navbar = () => {
     <>
       <nav className={`navbar fixed-top navbar-expand-sm navbar-dark ${breakpoint}`}>
         <Link className="navbar-brand" to="/">
-          {headerLogo}
-          <span className="ms-2">Heroes</span>
+          <img src="/assets/logo.png" className="logo" alt="logo" />
+          <span>Heroes</span>
         </Link>
 
-        {!isMobile() && navRoutes()}
-        {!isMobile() && navActions()}
-        {isMobile() && menuToggle()}
+        {!isMobile(breakpoint) && navRoutes()}
+        {!isMobile(breakpoint) && navActions()}
+        {isMobile(breakpoint) && menuToggle()}
 
-        <div className={`collapse w-100 ${menuOpened ? 'show' : ''}`}>
+        <div className={`collapse ${menuOpened ? 'show' : ''}`}>
           {navRoutes()}
           {navActions()}
         </div>

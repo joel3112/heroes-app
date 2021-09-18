@@ -1,3 +1,21 @@
+export const BREAKPOINTS = {
+  XS: 'xs',
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+  XXL: 'xxl',
+};
+
+export const BREAKPOINT_COLS = {
+  [BREAKPOINTS.XS]: 2,
+  [BREAKPOINTS.SM]: 2,
+  [BREAKPOINTS.MD]: 3,
+  [BREAKPOINTS.LG]: 4,
+  [BREAKPOINTS.XL]: 6,
+  [BREAKPOINTS.XXL]: 6,
+};
+
 export const publishers = {
   MARVEL: [
     'Angel',
@@ -17,7 +35,6 @@ export const publishers = {
     'Marvel Comics',
     'Meltdown',
     'Ms Marvel II',
-    'Oracle',
     'Phoenix',
     'Power Man',
     'Power Woman',
@@ -43,6 +60,7 @@ export const publishers = {
     'Boom-Boom',
     'DC Comics',
     'Impulse',
+    'Oracle',
     'Nightwing',
     'Red Hood',
     'Red Robin',

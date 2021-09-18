@@ -1,19 +1,20 @@
 /* eslint-disable no-undef */
 import { useEffect, useState } from 'react';
+import { BREAKPOINTS } from '../utils/constants';
 
 const getDeviceConfig = (width) => {
   if (width < 576) {
-    return 'xs';
+    return BREAKPOINTS.XS;
   } else if (width < 768) {
-    return 'sm';
+    return BREAKPOINTS.SM;
   } else if (width < 992) {
-    return 'md';
+    return BREAKPOINTS.MD;
   } else if (width < 1200) {
-    return 'lg';
-  } else if (width < 1400) {
-    return 'xl';
+    return BREAKPOINTS.LG;
+  } else if (width < 1600) {
+    return BREAKPOINTS.XL;
   } else {
-    return 'xxl';
+    return BREAKPOINTS.XXL;
   }
 };
 

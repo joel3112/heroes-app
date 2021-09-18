@@ -1,37 +1,101 @@
 import React from 'react';
+import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
-import './HeroCard.css';
+import { Space } from 'antd';
+import { Text, Title } from '../../styles/index';
 
-const heroData = (id, superhero, full_name) => {
-  if (!id) {
-    return (
-      <div className="card-data">
-        <h5 className="card-title placeholder-glow">
-          <span className="placeholder col-6"></span>
-        </h5>
-        <p className="card-text placeholder-glow">
-          <span className="placeholder col-8"></span>
-        </p>
-      </div>
-    );
+const CardContainer = styled(Link)`
+  overflow: hidden;
+  outline: none;
+  transition: color 0.3s;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-gray-light);
+  display: flex;
+  flex-direction: column;
+`;
+
+const CardHeader = styled.div`
+  overflow: hidden;
+  z-index: 3;
+  padding: 0;
+`;
+
+const CardImage = styled.div`
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--placeholder-bg);
+
+  a:hover & {
+    transform: scale(1.1);
+    transition: all 0.5s;
   }
+`;
 
+const CardBody = styled.div`
+  border-top: 5px solid var(--primary);
+  height: 110px;
+  padding: 10px 13px;
+  position: relative;
+  transition: color 0.3s;
+
+  ::before {
+    content: '';
+    background: var(--primary);
+    height: 100%;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+    width: 100%;
+    z-index: -1;
+  }
+  a:hover &::before {
+    transform: translate3d(0, 100%, 0);
+    z-index: 2;
+  }
+`;
+
+const SkeletonData = () => {
   return (
-    <div className="card-data">
-      <h5 className="card-title">{superhero}</h5>
-      <p className="card-text lh-sm">{full_name}</p>
-    </div>
+    <Space direction="vertical">
+      <Skeleton width={100} height={20} />
+      <Skeleton width={125} height={15} />
+    </Space>
   );
 };
 
+const LIMIT_CHARACTERS = 15;
+
 const HeroCard = ({ id, superhero, image, full_name }) => {
   return (
-    <Link to={`./heroes/${id}`} className="card">
-      <div className="card-header">
-        <div className="card-image" style={{ backgroundImage: `url(${image})` }}></div>
-      </div>
-      <div className="card-body">{heroData(id, superhero, full_name)}</div>
-    </Link>
+    <CardContainer to={`./heroes/${id}`}>
+      <CardHeader>
+        <CardImage style={{ backgroundImage: `url(${image})` }}></CardImage>
+      </CardHeader>
+      <CardBody>
+        {!id ? (
+          SkeletonData()
+        ) : (
+          <Space direction="vertical" size={[2, 2]}>
+            <Title level={5} style={{ zIndex: 3 }} breakline="true">
+              {superhero.toUpperCase()}
+            </Title>
+            {(superhero.length < LIMIT_CHARACTERS) && (full_name.length < LIMIT_CHARACTERS) &&
+            <Text size={0.75} weight={300} style={{ opacity: 0.6, zIndex: 3 }} uppercase="true">
+              {full_name}
+            </Text>}
+          </Space>
+        )}
+      </CardBody>
+    </CardContainer>
   );
 };
 

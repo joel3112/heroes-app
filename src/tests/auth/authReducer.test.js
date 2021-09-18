@@ -1,4 +1,4 @@
-import { authReducer } from '../../auth/authReducer';
+import { authReducer } from '../../contexts/authReducer';
 import { types } from '../../utils/types';
 
 describe('Pruebas en authReducer', () => {
