@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { ContainerContext } from '../../contexts/ContainerContext';
+import { FavoritesContextProvider } from '../../contexts/FavoritesContext';
 import { useInfinitiveScroll } from '../../hooks/useInfinitiveScroll';
 import HeroCard from './HeroCard';
 import { Row, Col } from 'antd';
@@ -42,7 +43,9 @@ const HeroList = ({ heroes, maxHeroesByPage, infiniteScroll = true }) => {
         hasMore={!loading && hasMore} 
         useWindow={false} 
         getScrollParent={() => container}>
-        {ListContainer()}
+        <FavoritesContextProvider>
+          {ListContainer()}
+        </FavoritesContextProvider>
       </InfiniteScroll>
     )
   );

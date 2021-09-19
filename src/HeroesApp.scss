@@ -97,16 +97,16 @@ body {
   display: flex;
 }
 
-.slick-slider .slick-slide {
-  margin-left: 0.8rem;
+// .slick-slider .slick-slide {
+//   margin-left: 0.8rem;
   
-  &[data-index="0"] {
-    margin-left: 0;
-  }
-  &.slick-active {
-    width: 16.55em !important;
-  }
-}
+//   &[data-index="0"] {
+//     margin-left: 0;
+//   }
+//   &.slick-active {
+//     width: 16.55em !important;
+//   }
+// }
 
 .slick-slider .slick-arrow {
   height: 3rem;
