@@ -84,6 +84,7 @@ body {
   height: calc(100vh - #{var(--header-height)});
   overflow-y: auto;
   overflow-x: hidden;
+  position: relative;
 }
 
 .page-container {

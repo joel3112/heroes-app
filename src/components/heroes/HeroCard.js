@@ -13,6 +13,7 @@ const CardContainer = styled(Link)`
   transition: color 0.3s;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   border: 1px solid var(--border-gray-light);
+  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
 `;
