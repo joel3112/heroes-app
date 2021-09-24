@@ -1,31 +1,26 @@
 import React, { useContext } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { ContainerContext } from '../../contexts/ContainerContext';
+import { FavoritesContextProvider } from '../../contexts/FavoritesContext';
 import { useInfinitiveScroll } from '../../hooks/useInfinitiveScroll';
 import HeroCard from './HeroCard';
-import { Row, Col } from 'antd';
-import { BREAKPOINTS, BREAKPOINT_COLS } from '../../utils/constants';
+import { BREAKPOINT_COLS } from '../../utils/constants';
+import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
 
 const HeroList = ({ heroes, maxHeroesByPage, infiniteScroll = true }) => {
   const { container } = useContext(ContainerContext);
   const [{ items, hasMore, loading }, fetchMoreData] = useInfinitiveScroll(heroes, maxHeroesByPage);
+  const breakpoint = useBreakpointViewport();
 
   const ListContainer = () => {
     return (
-      <Row gutter={[18, 18]}>
+      <div className="row">
         {items.map((item, index) => (
-          <Col 
-            key={item.id || index} 
-            xs={24/BREAKPOINT_COLS[BREAKPOINTS.XS]} 
-            sm={24/BREAKPOINT_COLS[BREAKPOINTS.SM]} 
-            md={24/BREAKPOINT_COLS[BREAKPOINTS.MD]} 
-            lg={24/BREAKPOINT_COLS[BREAKPOINTS.LG]} 
-            xl={24/BREAKPOINT_COLS[BREAKPOINTS.XL]} 
-            xxl={24/BREAKPOINT_COLS[BREAKPOINTS.XXL]}>
+          <div className={`col-${BREAKPOINT_COLS[breakpoint]}`} key={item.id || index} style={{ marginBottom: 'calc(2 * var(--glutter-card-grid))' }}>
             <HeroCard {...item} />
-          </Col>
+          </div>
         ))}
-      </Row>
+      </div>
     );
   }
 
@@ -42,7 +37,9 @@ const HeroList = ({ heroes, maxHeroesByPage, infiniteScroll = true }) => {
         hasMore={!loading && hasMore} 
         useWindow={false} 
         getScrollParent={() => container}>
-        {ListContainer()}
+        <FavoritesContextProvider>
+          {ListContainer()}
+        </FavoritesContextProvider>
       </InfiniteScroll>
     )
   );

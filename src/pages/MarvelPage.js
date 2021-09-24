@@ -9,9 +9,9 @@ import { useLoadHeroes } from '../hooks/useLoadHeroes';
 
 const MarvelPage = ({ history }) => {
   const { container } = useContext(ContainerContext);
-  const maxHeroesByPage = 24;
   const [
-    heroes, 
+    heroes,
+    maxHeroesByPage,
     q, 
     searchText, 
     handleInputChange, 

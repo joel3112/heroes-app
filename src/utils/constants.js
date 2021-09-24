@@ -7,13 +7,15 @@ export const BREAKPOINTS = {
   XXL: 'xxl',
 };
 
+export const GRID_COLUMNS = 60;
+
 export const BREAKPOINT_COLS = {
-  [BREAKPOINTS.XS]: 2,
-  [BREAKPOINTS.SM]: 2,
-  [BREAKPOINTS.MD]: 3,
-  [BREAKPOINTS.LG]: 4,
-  [BREAKPOINTS.XL]: 6,
-  [BREAKPOINTS.XXL]: 6,
+  [BREAKPOINTS.XS]: 30,
+  [BREAKPOINTS.SM]: 20,
+  [BREAKPOINTS.MD]: 15,
+  [BREAKPOINTS.LG]: 12,
+  [BREAKPOINTS.XL]: 10,
+  [BREAKPOINTS.XXL]: 10,
 };
 
 export const MAIN_HEROES = {

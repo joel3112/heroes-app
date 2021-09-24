@@ -6,7 +6,7 @@ const HeaderContainer = styled(Space)`
   width: 100%;
   min-height: 76px !important;
   padding-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   background-color: var(--white);
   
   hr {
@@ -18,9 +18,9 @@ const HeroHeader = ({ title, children, loading }) => {
   return (
     <HeaderContainer direction="vertical" justify="between" size={[15, 15]}>
       <Space 
-        direction="horizontal" 
-        align="center"
+        direction="horizontal"
         justify="between"
+        wrap
         size={[15, 15]}
         style={{ minHeight: 40 }}>
         <Title level={3} type="primary" loading={loading}>

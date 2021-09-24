@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FavoritesContextProvider } from '../contexts/FavoritesContext';
 import { useLoadHeroes } from '../hooks/useLoadHeroes';
 import { useBreakpointViewport } from '../hooks/useBreakpointViewport';
 import HeroHeader from '../components/heroes/HeroHeader';
@@ -34,7 +35,9 @@ const HomePage = ({ history }) => {
             </Link>
           </Space>
 
-          <HeroSlider heroes={heroes} slidesToShow={BREAKPOINT_COLS[breakpoint]} />
+          <FavoritesContextProvider>
+            <HeroSlider heroes={heroes} slidesToShow={BREAKPOINT_COLS[breakpoint]} />
+          </FavoritesContextProvider>
         </Space>
       ))}
     </div>

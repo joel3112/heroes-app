@@ -1,4 +1,5 @@
 import React from 'react';
+import { FavoritesContextProvider } from '../../contexts/FavoritesContext';
 import { useBreakpointViewport } from '../../hooks/useBreakpointViewport';
 import HeroProfileImage from './HeroProfileImage';
 import HeroProfileData from './HeroProfileData';
@@ -6,7 +7,6 @@ import { Space } from '../../styles';
 import { isMobileTablet } from '../../utils/helpers';
 
 const HeroProfile = ({ hero, loading }) => {
-  const { image, ...restData } = hero;
   const breakpoint = useBreakpointViewport();
 
   return (
@@ -15,9 +15,10 @@ const HeroProfile = ({ hero, loading }) => {
       align={isMobileTablet(breakpoint) && 'center'}
       wrap={isMobileTablet(breakpoint)}
       size={[50, 50]}>
-      <HeroProfileImage image={image} loading={loading} />
-      
-      <HeroProfileData hero={restData} loading={loading} />
+      <FavoritesContextProvider>
+        <HeroProfileImage hero={hero} loading={loading} />        
+        <HeroProfileData hero={hero} loading={loading} />
+      </FavoritesContextProvider>      
     </Space>
   );
 };
