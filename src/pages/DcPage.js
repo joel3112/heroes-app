@@ -9,9 +9,9 @@ import { useLoadHeroes } from '../hooks/useLoadHeroes';
 
 const DcPage = ({ history }) => {
   const { container } = useContext(ContainerContext);
-  const maxHeroesByPage = 24;
   const [
     heroes, 
+    maxHeroesByPage,
     q, 
     searchText, 
     handleInputChange, 

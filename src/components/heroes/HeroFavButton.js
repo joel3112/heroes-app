@@ -5,9 +5,9 @@ import { Tooltip } from 'antd';
 
 const FavContainer = styled.div`
   position: absolute;
-  bottom: 0.5em;
-  right: 0.5em;
-  ${({ size }) => `font-size: ${size}rem`};
+  bottom: 0.3em;
+  right: 0.3em;
+  ${({ size }) => `font-size: ${size}rem !important`};
   z-index: 3;
   cursor: pointer;
 

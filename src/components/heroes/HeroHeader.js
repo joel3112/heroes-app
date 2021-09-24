@@ -6,7 +6,7 @@ const HeaderContainer = styled(Space)`
   width: 100%;
   min-height: 76px !important;
   padding-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   background-color: var(--white);
   
   hr {
